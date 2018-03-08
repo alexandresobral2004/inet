@@ -33,7 +33,7 @@ module PppInterface like IPppInterface
 {
     parameters:
         @class(InterfaceEntry);
-        @display("i=block/ifcard;bgb=214,249;bgl=53");
+        @display("i=block/ifcard;bgl=53");
         string interfaceTableModule;
         string queueType = default("DropTailQueue"); // DropTailQueue, a Diffserv queue, or empty for use internal queue
         string ingressTCType = default(""); // a module type implementing ~ITrafficConditioner for optional traffic conditioning of incoming traffic
@@ -47,26 +47,26 @@ module PppInterface like IPppInterface
         inout phys @labels(PppFrame);
     submodules:
         outputHook[numOutputHooks]: <default("Nop")> like IHook if numOutputHooks>0 {
-            @display("p=42,33");
+            @display("p=300,100");
         }
         inputHook[numInputHooks]: <default("Nop")> like IHook if numInputHooks>0 {
-            @display("p=177,33");
+            @display("p=500,100");
         }
         ingressTC: <ingressTCType> like ITrafficConditioner if ingressTCType != "" {
-            @display("p=177,100");
+            @display("p=700,200");
         }
         egressTC: <egressTCType> like ITrafficConditioner if egressTCType != "" {
-            @display("p=42,100");
+            @display("p=100,200");
         }
         queue: <queueType> like IOutputQueue if queueType != "" {
             parameters:
-                @display("p=42,161;q=l2queue");
+                @display("p=245,229;q=l2queue");
         }
         ppp: Ppp {
             parameters:
                 queueModule = (queueType == "" ? "" : "^.queue");
                 txQueueLimit = (queueType == "" ? 10000 : 1); // queue sends one packet at a time
-                @display("p=98,207");
+                @display("p=400,400");
         }
     connections:
         upperLayerIn --> { @display("m=n"); } --> outputHook[0].in if numOutputHooks > 0;
