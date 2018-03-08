@@ -39,15 +39,15 @@ module NetworkLayerNodeBase extends LinkLayerNodeBase
     submodules:
         ipv4: <ipv4NetworkLayerType> like INetworkLayer if hasIpv4 {
             parameters:
-                @display("p=400,425;q=queue");
+                @display("p=450,425;q=queue");
         }
         ipv6: <ipv6NetworkLayerType> like INetworkLayer if hasIpv6 {
             parameters:
-                @display("p=600,425;q=queue");
+                @display("p=650,425;q=queue");
         }
         generic: <networkLayerType> like INetworkLayer if hasGn {
             parameters:
-                @display("p=900,425;q=queue");
+                @display("p=850,425;q=queue");
         }
         nl: MessageDispatcher {
             parameters:
@@ -55,13 +55,13 @@ module NetworkLayerNodeBase extends LinkLayerNodeBase
         }
 
     connections allowunconnected:
-        ipv4.ifIn <-- nl.out++if hasIpv4;
+        ipv4.ifIn <-- nl.out++ if hasIpv4;
         ipv4.ifOut --> nl.in++ if hasIpv4;
 
-        ipv6.ifIn <-- nl.out++if hasIpv6;
+        ipv6.ifIn <-- nl.out++ if hasIpv6;
         ipv6.ifOut --> nl.in++ if hasIpv6;
 
-        generic.ifIn <-- nl.out++if networkLayerType != "";
+        generic.ifIn <-- nl.out++ if networkLayerType != "";
         generic.ifOut --> nl.in++ if networkLayerType != "";
 
         for i=0..numLoInterfaces-1 {
