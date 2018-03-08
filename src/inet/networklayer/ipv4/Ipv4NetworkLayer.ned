@@ -55,40 +55,40 @@ module Ipv4NetworkLayer like INetworkLayer
     submodules:
         configurator: Ipv4NodeConfigurator {
             parameters:
-                @display("p=100,100;is=s");
+                @display("p=150,100;is=s");
         }
         routingTable: Ipv4RoutingTable {
             parameters:
-                @display("p=100,200;is=s");
+                @display("p=150,200;is=s");
         }
         up: MessageDispatcher {
             parameters:
-                @display("p=450,100;b=480,5");
+                @display("p=600,100;b=600,5");
         }
         igmp: <igmpType> like IIgmp {
             parameters:
-                @display("p=300,200");
+                @display("p=350,200");
         }
         icmp: Icmp {
             parameters:
-                @display("p=600,200");
+                @display("p=850,200");
         }
         mp: MessageDispatcher {
             parameters:
-                @display("p=450,300;b=480,5");
+                @display("p=600,300;b=600,5");
         }
         ip: Ipv4 {
             parameters:
                 useProxyARP = true; // as routes with unspecified next-hop addr are quite common
-                @display("p=450,400;q=queue");
+                @display("p=800,400;q=queue");
         }
         arp: <arpType> like IArp {
             parameters:
-                @display("p=300,400;q=pendingQueue");
+                @display("p=400,400;q=pendingQueue");
         }
         lp: MessageDispatcher {
             parameters:
-                @display("p=450,500;b=480,5");
+                @display("p=600,500;b=600,5");
         }
 
     connections allowunconnected:
