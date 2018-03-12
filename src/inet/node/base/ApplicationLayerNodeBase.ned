@@ -30,11 +30,11 @@ module ApplicationLayerNodeBase extends TransportLayerNodeBase
     submodules:
         app[numApps]: <> like IApp {
             parameters:
-                @display("p=300,85,row,150");
+                @display("p=375,90,row,150");
         }
         at: MessageDispatcher {
             parameters:
-                @display("p=750,170;b=1000,5,,,,1");
+                @display("p=750,160;b=1000,5,,,,1");
         }
 
     connections allowunconnected:

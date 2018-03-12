@@ -39,8 +39,8 @@ module LinkLayerNodeBase extends NodeBase
         int numTunInterfaces = default(0);
         mobilityType = default(numWlanInterfaces > 0 ? "StationaryMobility" : "");
         *.interfaceTableModule = default(absPath(".interfaceTable"));
-        @figure[linkLayer](type=rectangle; pos=250,530; size=1000,130; fillColor=#0000ff; lineColor=#808080; cornerRadius=5; fillOpacity=0.1);
-        @figure[linkLayer.title](type=text; pos=1245,535; anchor=ne; text="link layer");
+        @figure[linkLayer](type=rectangle; pos=250,470; size=1000,200; fillColor=#0000ff; lineColor=#808080; cornerRadius=5; fillOpacity=0.1);
+        @figure[linkLayer.title](type=text; pos=1245,475; anchor=ne; text="link layer");
 
     gates:
         input radioIn[numWlanInterfaces] @directIn;
@@ -50,36 +50,36 @@ module LinkLayerNodeBase extends NodeBase
     submodules:
         pcapRecorder[numPcapRecorders]: PcapRecorder {
             parameters:
-                @display("p=120,550;is=s");
+                @display("p=125,560;is=s");
         }
         interfaceTable: InterfaceTable {
             parameters:
-                @display("p=120,650;is=s");
+                @display("p=125,240;is=s");
         }
         lo[numLoInterfaces]: <default("LoopbackInterface")> like ILoopbackInterface {
             parameters:
-                @display("p=300,595,row,150;");
+                @display("p=300,540,row,200");
         }
         // TODO: move wlan interfaces after eth interfaces, but it changes IP address assignment and breaks examples/inet/configurator/complex.ini
         wlan[numWlanInterfaces]: <default("Ieee80211Interface")> like IWirelessInterface {
             parameters:
-                @display("p=750,595,row,150;q=queue");
+                @display("p=500,540,row,200;q=queue");
         }
         ppp[sizeof(pppg)]: <default("PppInterface")> like IPppInterface {
             parameters:
-                @display("p=450,595,row,150;q=txQueue");
+                @display("p=400,620,row,200;q=txQueue");
         }
         eth[sizeof(ethg)]: <default("EthernetInterface")> like IEthernetInterface {
             parameters:
-                @display("p=600,595,row,150;q=txQueue");
+                @display("p=800,540,row,200;q=txQueue");
         }
         ext[numExtInterfaces]: <default("ExtInterface")> like IExternalInterface {
             parameters:
-                @display("p=900,595,row,150;q=txQueue");
+                @display("p=1200,540,row,200;q=txQueue");
         }
         tun[numTunInterfaces]: <default("TunInterface")> like ITunnelInterface {
             parameters:
-                @display("p=1050,595,row,150;q=txQueue");
+                @display("p=900,540,row,200;q=txQueue");
         }
 
     connections allowunconnected:

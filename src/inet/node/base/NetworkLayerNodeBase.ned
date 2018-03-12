@@ -33,25 +33,25 @@ module NetworkLayerNodeBase extends LinkLayerNodeBase
         bool multicastForwarding = default(false);
         *.forwarding = forwarding;
         *.multicastForwarding = multicastForwarding;
-        @figure[networkLayer](type=rectangle; pos=250,360; size=1000,130; fillColor=#00ff00; lineColor=#808080; cornerRadius=5; fillOpacity=0.1);
-        @figure[networkLayer.title](type=text; pos=1245,365; anchor=ne; text="network layer");
+        @figure[networkLayer](type=rectangle; pos=250,320; size=1000,130; fillColor=#00ff00; lineColor=#808080; cornerRadius=5; fillOpacity=0.1);
+        @figure[networkLayer.title](type=text; pos=1245,325; anchor=ne; text="network layer");
 
     submodules:
         ipv4: <ipv4NetworkLayerType> like INetworkLayer if hasIpv4 {
             parameters:
-                @display("p=450,425;q=queue");
+                @display("p=450,390;q=queue");
         }
         ipv6: <ipv6NetworkLayerType> like INetworkLayer if hasIpv6 {
             parameters:
-                @display("p=650,425;q=queue");
+                @display("p=650,390;q=queue");
         }
         generic: <networkLayerType> like INetworkLayer if hasGn {
             parameters:
-                @display("p=850,425;q=queue");
+                @display("p=850,390;q=queue");
         }
         nl: MessageDispatcher {
             parameters:
-                @display("p=750,510;b=1000,5,,,,1");
+                @display("p=750,460;b=1000,5,,,,1");
         }
 
     connections allowunconnected:

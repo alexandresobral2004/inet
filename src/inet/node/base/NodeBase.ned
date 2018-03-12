@@ -52,23 +52,23 @@ module NodeBase like INetworkNode
     submodules:
         status: NodeStatus if hasStatus {
             parameters:
-                @display("p=120,50;is=s");
+                @display("p=125,80;is=s");
         }
         energyStorage: <energyStorageType> like IEnergyStorage if energyStorageType != "" {
             parameters:
-                @display("p=120,250;is=s");
+                @display("p=125,320;is=s");
         }
         energyManagement: <energyManagementType> like IEnergyManagement if energyManagementType != "" {
             parameters:
-                @display("p=120,350;i=block/plug;is=s");
+                @display("p=125,400;i=block/plug;is=s");
         }
         energyGenerator: <energyGeneratorType> like IEnergyGenerator if energyGeneratorType != "" {
             parameters:
-                @display("p=120,450;is=s");
+                @display("p=125,480;is=s");
         }
         // TODO: move mobility right after status to have it in the same order as in their positions, changes fingerprints 
         mobility: <mobilityType> like IMobility if mobilityType != "" {
             parameters:
-                @display("p=120,150;is=s");
+                @display("p=125,160;is=s");
         }
 }
