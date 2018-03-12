@@ -15,6 +15,7 @@
 
 package inet.examples.nedcleanup;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
+import inet.node.aodv.AodvRouter;
 import inet.node.ethernet.Eth100M;
 import inet.node.inet.StandardHost;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
@@ -38,8 +39,12 @@ network NedcleanupNetwork
         standardHost1: StandardHost {
             @display("p=430,97");
         }
+        aodvRouter: AodvRouter {
+            @display("p=165,330");
+        }
     connections:
         standardHost.ethg++ <--> Eth100M <--> standardHost1.ethg++;
         standardHost.pppg++ <--> Eth100M <--> standardHost1.pppg++;
+        standardHost.ethg++ <--> Eth100M <--> standardHost1.ethg++;
 }
 
