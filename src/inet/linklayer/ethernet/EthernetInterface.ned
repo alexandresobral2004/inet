@@ -53,10 +53,10 @@ module EthernetInterface like IEthernetInterface
         inout phys @labels(EtherFrame);
     submodules:
         outputHook[numOutputHooks]: <default("Nop")> like IHook if numOutputHooks>0 {
-            @display("p=200,100");
+            @display("p=100,100;is=s");
         }
         inputHook[numInputHooks]: <default("Nop")> like IHook if numInputHooks>0 {
-            @display("p=400,100");
+            @display("p=500,100;is=s");
         }
         ingressTC: <ingressTCType> like ITrafficConditioner if ingressTCType != "" {
             @display("p=500,200");
@@ -67,17 +67,17 @@ module EthernetInterface like IEthernetInterface
         queue: EtherQosQueue if queueType != "" {
             parameters:
                 dataQueueType = queueType;
-                @display("p=200,350;q=l2queue");
+                @display("p=200,400;q=l2queue");
         }
         mac: <macType> like IEtherMac {
             parameters:
                 queueModule = (queueType == "" ? "" : "^.queue");
                 txQueueLimit = (queueType == "" ? 10000 : 1); // queue sends one packet at a time
-                @display("p=300,450");
+                @display("p=300,500");
         }
         encap: <encapType> like IEtherEncap {
             parameters:
-                @display("p=300,250");
+                @display("p=300,300");
         }
     connections:
         mac.upperLayerOut --> encap.lowerLayerIn;

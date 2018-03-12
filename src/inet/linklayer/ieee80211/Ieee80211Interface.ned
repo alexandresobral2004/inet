@@ -88,7 +88,7 @@ module Ieee80211Interface like IWirelessInterface
         }
         radio: <radioType> like IRadio {
             parameters:
-                @display("p=250,500");
+                @display("p=250,600");
         }
     connections:
         radioIn --> { @display("m=s"); } --> radio.radioIn;

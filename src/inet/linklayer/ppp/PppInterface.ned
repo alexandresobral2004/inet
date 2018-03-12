@@ -47,26 +47,26 @@ module PppInterface like IPppInterface
         inout phys @labels(PppFrame);
     submodules:
         outputHook[numOutputHooks]: <default("Nop")> like IHook if numOutputHooks>0 {
-            @display("p=300,100");
+            @display("p=100,100;is=s");
         }
         inputHook[numInputHooks]: <default("Nop")> like IHook if numInputHooks>0 {
-            @display("p=500,100");
+            @display("p=500,100;is=s");
         }
         ingressTC: <ingressTCType> like ITrafficConditioner if ingressTCType != "" {
-            @display("p=700,200");
+            @display("p=500,200");
         }
         egressTC: <egressTCType> like ITrafficConditioner if egressTCType != "" {
             @display("p=100,200");
         }
         queue: <queueType> like IOutputQueue if queueType != "" {
             parameters:
-                @display("p=245,229;q=l2queue");
+                @display("p=200,300;q=l2queue");
         }
         ppp: Ppp {
             parameters:
                 queueModule = (queueType == "" ? "" : "^.queue");
                 txQueueLimit = (queueType == "" ? 10000 : 1); // queue sends one packet at a time
-                @display("p=400,400");
+                @display("p=300,400");
         }
     connections:
         upperLayerIn --> { @display("m=n"); } --> outputHook[0].in if numOutputHooks > 0;
