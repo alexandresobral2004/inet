@@ -42,7 +42,7 @@ module EtherSwitch
     parameters:
         @networkNode();
         @labels(node,ethernet-node);
-        @display("i=device/switch;bgb=663,297");
+        @display("i=device/switch");
         bool hasStatus = default(false);
         bool csmacdSupport = default(true);  // by default use CSMA/CD
         string macType = default(csmacdSupport ? "EtherMac" : "EtherMacFullDuplex"); // ~EtherMac or ~EtherMacFullDuplex
@@ -58,31 +58,31 @@ module EtherSwitch
         inout ethg[] @labels(EtherFrame-conn);
     submodules:
         status: NodeStatus if hasStatus {
-            @display("p=73,177;is=s");
+            @display("p=100,240;is=s");
         }
         l2NodeConfigurator: L2NodeConfigurator if spanningTreeProtocol != "" {
-            @display("p=73,252;is=s");
+            @display("p=100,320;is=s");
         }
         interfaceTable: InterfaceTable {
-            @display("p=73,115;is=s");
+            @display("p=100,160;is=s");
         }
         macTable: <macTableType> like IMacAddressTable {
-            @display("p=73,42;is=s");
+            @display("p=100,80;is=s");
         }
         relayUnit: <relayUnitType> like IMacRelayUnit {
-            @display("p=264,89;is=m");
+            @display("p=400,100;is=m");
         }
         stp: <spanningTreeProtocol> like ISpanningTree if spanningTreeProtocol != "" {
-            @display("p=169,89");
+            @display("p=250,100");
         }
         nl: MessageDispatcher {
             parameters:
-                @display("p=427,167;b=395,5");
+                @display("p=400,200;b=400");
         }
         eth[sizeof(ethg)]: <default("EthernetInterface")> like IEthernetInterface {
             parameters:
                 mac.promiscuous = true;
-                @display("p=264,247,row;q=txQueue");
+                @display("p=400,300,row,150;q=txQueue");
         }
     connections:
         relayUnit.ifOut --> nl.in++;
