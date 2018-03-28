@@ -37,15 +37,15 @@ module TransportLayerNodeBase extends NetworkLayerNodeBase
     submodules:
         udp: <udpType> like IUdp if hasUdp {
             parameters:
-                @display("p=350,240");
+                @display("p=325,240");
         }
         tcp: <tcpType> like ITcp if hasTcp {
             parameters:
-                @display("p=550,240");
+                @display("p=475,240");
         }
         sctp: <sctpType> like ISctp if hasSctp {
             parameters:
-                @display("p=950,240");
+                @display("p=625,240");
         }
         tn: MessageDispatcher {
             parameters:

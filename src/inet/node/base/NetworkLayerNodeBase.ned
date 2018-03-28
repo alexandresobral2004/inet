@@ -39,15 +39,15 @@ module NetworkLayerNodeBase extends LinkLayerNodeBase
     submodules:
         ipv4: <ipv4NetworkLayerType> like INetworkLayer if hasIpv4 {
             parameters:
-                @display("p=450,390;q=queue");
+                @display("p=400,390;q=queue");
         }
         ipv6: <ipv6NetworkLayerType> like INetworkLayer if hasIpv6 {
             parameters:
-                @display("p=650,390;q=queue");
+                @display("p=550,390;q=queue");
         }
         generic: <networkLayerType> like INetworkLayer if hasGn {
             parameters:
-                @display("p=850,390;q=queue");
+                @display("p=700,390;q=queue");
         }
         nl: MessageDispatcher {
             parameters:
