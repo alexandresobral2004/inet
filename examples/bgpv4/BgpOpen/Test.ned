@@ -4,7 +4,7 @@ package inet.examples.bgpv4.BgpOpen;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 
 
-network Net
+network BgpOpenMessageExample
 {
     types:
         channel LINK_100 extends ned.DatarateChannel
@@ -17,14 +17,14 @@ network Net
     submodules:
         A: BGPRouterSimple {
             parameters:
-                @display("p=80,60");
+                @display("p=250,80");
         }
         B: BGPRouterSimple {
             parameters:
-                @display("p=200,60");
+                @display("p=400,80");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=62,127");
+            @display("p=100,80");
             config = xmldoc("IPv4Config.xml");
             //assignAddresses = false;
             //assignDisjunctSubnetAddresses = false;

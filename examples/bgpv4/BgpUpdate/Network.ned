@@ -5,7 +5,7 @@ import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.StandardHost;
 
 
-network BGPTest
+network BgpUpdateMessageExample
 {
     types:
         channel LINK_100 extends ThruputMeteringChannel
@@ -18,32 +18,32 @@ network BGPTest
     submodules:
         A: BGPRouterEx {
             parameters:
-                @display("p=160,92");
+                @display("p=400,80");
             gates:
                 pppg[1];
                 ethg[1];
         }
         B: BGPRouterEx {
             parameters:
-                @display("p=256,92");
+                @display("p=550,80");
             gates:
                 pppg[1];
                 ethg[1];
         }
         H1: StandardHost {
             parameters:
-                @display("p=56,92;i=device/laptop");
+                @display("p=250,80;i=device/laptop");
             gates:
                 ethg[1];
         }
         H2: StandardHost {
             parameters:
-                @display("p=364,92;i=device/laptop");
+                @display("p=700,80;i=device/laptop");
             gates:
                 ethg[1];
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=208,23");
+            @display("p=100,80");
             config = xmldoc("IPv4Config.xml");
             //assignAddresses = false;
             //assignDisjunctSubnetAddresses = false;

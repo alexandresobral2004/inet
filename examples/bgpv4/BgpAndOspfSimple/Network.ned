@@ -8,7 +8,7 @@ import inet.node.inet.StandardHost;
 import inet.node.ospfv2.OspfRouter;
 
 
-network BGPNet
+network BgpAndOspfSimpleExample
 {
     types:
         channel LINK_100 extends ThruputMeteringChannel
@@ -22,44 +22,44 @@ network BGPNet
     submodules:
         A: BgpRouter {
             parameters:
-                @display("p=226,109");
+                @display("p=550,80");
             gates:
                 pppg[2];
         }
         B: BgpRouter {
             parameters:
-                @display("p=314,109");
+                @display("p=700,80");
             gates:
                 pppg[2];
         }
         RA1: OspfRouter {
             parameters:
-                @display("p=134,105;i=device/router");
+                @display("p=400,80;i=device/router");
             gates:
                 pppg[1];
                 ethg[1];
         }
         RB1: OspfRouter {
             parameters:
-                @display("p=406,105;i=device/router");
+                @display("p=850,80;i=device/router");
             gates:
                 pppg[1];
                 ethg[1];
         }
         HA11: StandardHost {
             parameters:
-                @display("p=42,98;i=device/pc");
+                @display("p=250,80;i=device/pc");
             gates:
                 ethg[1];
         }
         HB11: StandardHost {
             parameters:
-                @display("p=494,98;i=device/pc");
+                @display("p=1000,80;i=device/pc");
             gates:
                 ethg[1];
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=275,23");
+            @display("p=100,80");
             config = xmldoc("IPv4Config.xml");
             //assignAddresses = false;
             //assignDisjunctSubnetAddresses = false;
