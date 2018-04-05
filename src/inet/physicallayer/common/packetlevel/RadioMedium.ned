@@ -59,7 +59,7 @@ module RadioMedium like IRadioMedium
         bool recordCommunicationLog = default(false); // when enabled the medium writes a communication log file that contains one line per transmission and per reception
 
         @class(RadioMedium);
-        @display("i=misc/sun_s");
+        @display("i=misc/sun");
 
         @signal[radioAdded];
         @signal[radioRemoved];
