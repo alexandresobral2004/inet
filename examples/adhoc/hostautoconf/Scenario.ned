@@ -25,6 +25,7 @@ network Scenario
 {
     parameters:
         int hosts;
+        @display("bgb=650,450");
     submodules:
         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
             parameters:
@@ -34,5 +35,7 @@ network Scenario
             parameters:
                 @display("p=100,150");
         }
-        host[hosts]: Host;
+        host[hosts]: Host {
+            @display("p=300,150");
+        }
 }

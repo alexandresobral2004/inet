@@ -33,7 +33,7 @@ module Host extends WirelessHost
 
     submodules:
         ac_wlan: HostAutoConfigurator {
-            @display("p=171,335");
+            @display("p=125,320;is=s");
         }
 
 }

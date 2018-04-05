@@ -27,6 +27,7 @@ network Net80211
 {
     parameters:
         int numHosts;
+        @display("bgb=650,450");
     submodules:
         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
             parameters:
@@ -42,6 +43,6 @@ network Net80211
         }
         host[numHosts]: AdhocHost {
             parameters:
-                @display("r=,,#707070;p=250,58");
+                @display("r=,,#707070;p=300,150");
         }
 }

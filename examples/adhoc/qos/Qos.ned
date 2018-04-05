@@ -29,19 +29,19 @@ network QosThroughput
         @display("b=297,203");
     submodules:
         configurator: Ipv4NetworkConfigurator {
-            @display("p=61,164");
+            @display("p=100,150");
         }
         srvHost: AdhocHost {
             parameters:
-                @display("r=,,#707070");
+                @display("r=,,#707070;p=500,100");
         }
         cliHost: AdhocHost {
             parameters:
-                @display("r=,,#707070");
+                @display("r=,,#707070;p=300,100");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=61,46");
+                @display("p=100,50");
         }
 }
 
