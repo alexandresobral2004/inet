@@ -51,6 +51,9 @@ network NedcleanupNetwork
         etherSwitch: EtherSwitch {
             @display("p=363,216");
         }
+        standardHost2: StandardHost {
+            @display("p=97,184");
+        }
     connections:
         standardHost.ethg++ <--> Eth100M <--> standardHost1.ethg++;
         standardHost.pppg++ <--> Eth100M <--> standardHost1.pppg++;

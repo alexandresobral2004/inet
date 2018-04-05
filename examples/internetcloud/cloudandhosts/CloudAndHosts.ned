@@ -38,7 +38,7 @@ network CloudAndHosts
     submodules:
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                @display("p=61,163");
+                @display("p=100,50");
         }
 
         sender[numSenders]: StandardHost;

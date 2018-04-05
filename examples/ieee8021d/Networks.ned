@@ -25,63 +25,62 @@ import inet.node.ethernet.EtherSwitch;
 
 network SwitchNetwork
 {
-    @display("bgb=689,368");
     submodules:
         stpTester: StpTester {
-            @display("p=75,277");
+            @display("p=100,290;is=s");
         }
         scenarioManager: ScenarioManager {
-            @display("p=75,101");
+            @display("p=100,50;is=s");
         }
         l2NetworkConfigurator: L2NetworkConfigurator {
-            @display("p=75,217");
+            @display("p=100,210;is=s");
         }
 
         switch1: EtherSwitch {
             parameters:
-                @display("p=333,78");
+                @display("p=400,50");
             gates:
                 ethg[];
         }
 
         switch2: EtherSwitch {
             parameters:
-                @display("p=301,217");
+                @display("p=400,250");
             gates:
                 ethg[];
         }
 
         switch3: EtherSwitch {
             parameters:
-                @display("p=443,78");
+                @display("p=550,50");
             gates:
                 ethg[];
         }
 
         switch4: EtherSwitch {
             parameters:
-                @display("p=322,153");
+                @display("p=400,150");
             gates:
                 ethg[];
         }
 
         switch5: EtherSwitch {
             parameters:
-                @display("p=529,217");
+                @display("p=650,250");
             gates:
                 ethg[];
         }
 
         switch6: EtherSwitch {
             parameters:
-                @display("p=200,154");
+                @display("p=250,150");
             gates:
                 ethg[];
         }
 
         switch7: EtherSwitch {
             parameters:
-                @display("p=443,153");
+                @display("p=550,150");
             gates:
                 ethg[];
         }
@@ -100,39 +99,38 @@ network SwitchNetwork
 
 network LargeNet extends SwitchNetwork
 {
-    @display("bgb=952,472");
     submodules:
         host1: EtherHost {
-            @display("p=200,79");
+            @display("p=250,50");
         }
 
         host2: EtherHost {
-            @display("p=609,217");
+            @display("p=800,250");
         }
 
         host3: EtherHost {
-            @display("p=529,78");
+            @display("p=700,50");
         }
         host4: EtherHost {
-            @display("p=679,422");
+            @display("p=700,450");
         }
         host5: EtherHost {
-            @display("p=479,422");
+            @display("p=250,450");
         }
         host6: EtherHost {
-            @display("p=322,321");
+            @display("p=250,350");
         }
         switch8: EtherSwitch {
-            @display("p=443,282");
+            @display("p=400,350");
         }
         switch9: EtherSwitch {
-            @display("p=518,352");
+            @display("p=400,450");
         }
         switch10: EtherSwitch {
-            @display("p=648,352");
+            @display("p=550,450");
         }
         switch11: EtherSwitch {
-            @display("p=579,288");
+            @display("p=550,350");
         }
     connections:
         switch11.ethg++ <--> Eth1G <--> switch9.ethg++;
