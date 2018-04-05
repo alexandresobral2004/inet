@@ -28,35 +28,34 @@ import inet.visualizer.contract.IIntegratedVisualizer;
 
 network WirelessNetWith2DHCP
 {
-    @display("bgb=590,407;bgl=2");
     int numHosts;
     submodules:
         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
-            @display("p=305,35");
+            @display("p=100,210");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
-            @display("p=64,34");
+            @display("p=100,50");
         }
         client: WirelessHost {
-            @display("p=64,124");
+            @display("p=250,100");
         }
         ap1: AccessPoint {
-            @display("p=64,238");
+            @display("p=250,250");
         }
         dhcpServer1: StandardHost {
-            @display("p=64,307");
+            @display("p=250,350");
         }
         ap2: AccessPoint {
-            @display("p=511,231");
+            @display("p=650,250");
         }
         dhcpServer2: StandardHost {
-            @display("p=511,307");
+            @display("p=650,350");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=180,35");
+            @display("p=100,130");
         }
         server: StandardHost {
-            @display("p=283,363");
+            @display("p=450,400");
         }
     connections:
         dhcpServer1.ethg++ <--> Eth100M <--> ap1.ethg++;
