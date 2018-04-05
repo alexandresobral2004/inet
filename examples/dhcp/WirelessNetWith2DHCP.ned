@@ -31,10 +31,10 @@ network WirelessNetWith2DHCP
     int numHosts;
     submodules:
         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
-            @display("p=100,210");
+            @display("p=100,210;is=s");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
-            @display("p=100,50");
+            @display("p=100,140;is=s");
         }
         client: WirelessHost {
             @display("p=250,100");
@@ -52,7 +52,7 @@ network WirelessNetWith2DHCP
             @display("p=650,350");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=100,130");
+            @display("p=100,70;is=s");
         }
         server: StandardHost {
             @display("p=450,400");

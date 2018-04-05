@@ -51,49 +51,49 @@ network DiffservNetwork
         }
     submodules:
         H1: StandardHost {
-            @display("p=46,43");
+            @display("p=250,70");
         }
         H2: StandardHost {
-            @display("p=46,143");
+            @display("p=250,170");
         }
         R4: Router {
-            @display("p=473,108");
+            @display("p=850,120");
         }
         R2: Router {
-            @display("p=237,178");
+            @display("p=550,220");
         }
         R1: Router {
-            @display("p=156,263");
+            @display("p=400,320");
         }
         R3: Router {
-            @display("p=390,178");
+            @display("p=700,220");
         }
         R5: Router {
-            @display("p=473,263");
+            @display("p=850,320");
         }
         R0: Router {
-            @display("p=156,108");
+            @display("p=400,120");
         }
         H5: StandardHost {
-            @display("p=570,59");
+            @display("p=1000,70");
         }
         H6: StandardHost {
-            @display("p=570,150");
+            @display("p=1000,170");
         }
         H7: StandardHost {
-            @display("p=571,250");
+            @display("p=1000,270");
         }
         H8: StandardHost {
-            @display("p=571,350");
+            @display("p=1000,370");
         }
         H3: StandardHost {
-            @display("p=41,240");
+            @display("p=250,270");
         }
         H4: StandardHost {
-            @display("p=42,346");
+            @display("p=250,370");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=300,24");
+            @display("p=100,70;is=s");
         }
     connections:
         H1.ethg++ <--> ethernetline <--> R0.ethg++;

@@ -72,7 +72,7 @@ network ARPTest
             @display("p=100,350;i=device/laptop");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=100,50");
+            @display("p=100,70;is=s");
         }
     connections:
         server.ethg++ <--> ethline <--> router8.ethg++;

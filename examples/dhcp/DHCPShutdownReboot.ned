@@ -27,18 +27,18 @@ network DHCPShutdownReboot
 {
     submodules:
         scenarioManager: ScenarioManager {
-            @display("p=100,50");
+            @display("p=100,210;is=s");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
                 config = xml("<config><interface hosts='server' address='192.168.1.1' netmask='255.255.255.0'/></config>");
-                @display("p=100,130");
+                @display("p=100,70;;is=s");
         }
         client: StandardHost {
-            @display("p=250,130");
+            @display("p=250,140");
         }
         server: StandardHost {
-            @display("p=550,130");
+            @display("p=550,140");
         }
     connections:
         client.ethg++ <--> Eth10M <--> server.ethg++;

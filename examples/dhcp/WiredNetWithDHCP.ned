@@ -42,7 +42,7 @@ network WiredNetWithDHCP
         configurator: Ipv4NetworkConfigurator {
             parameters:
                 config = xml("<config><interface hosts='server' address='192.168.1.1' netmask='255.255.255.0' /></config>");
-                @display("p=100,50");
+                @display("p=100,70;is=s");
         }
     connections:
         server.ethg++ <--> Eth10M <--> switch.ethg++;

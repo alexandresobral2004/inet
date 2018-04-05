@@ -44,15 +44,15 @@ module SmallLAN
 {
     parameters:
         int h; // number of hosts on the hub
-        @display("i=old/cloud_s");
+        @display("i=old/cloud");
     gates:
         inout ethg;
     submodules:
         hub: EtherHub {
-            @display("is=s");
+            @display("p=400,70");
         }
         host[h]: EtherHost {
-            @display("is=s");
+            @display("p=100,170,row,150");
         }
     connections:
         for i=0..h-1 {
@@ -70,21 +70,21 @@ module MediumLAN
     parameters:
         int n; // number of hosts on the switch
         int h; // number of hosts on the hub
-        @display("i=old/cloud_s");
+        @display("i=old/cloud");
     gates:
         inout ethg;
     submodules:
         switch: EtherSwitch {
-            @display("is=s");
+            @display("p=625,70");
         }
         host[n]: EtherHost {
-            @display("is=s");
+            @display("p=100,170,row,150");
         }
         hub: EtherHub {
-            @display("is=s");
+            @display("p=625,270");
         }
         hhost[h]: EtherHost {
-            @display("is=s");
+            @display("p=325,370,row,150");
         }
     connections:
         for i=0..n-1 {
@@ -124,26 +124,26 @@ module LargeLAN
         }
     submodules:
         switch: EtherSwitch {
-            @display("is=s");
+            @display("p=450,70");
         }
         host[n]: EtherHost {
-            @display("is=s");
+            @display("p=100,140,row,100");
         }
         hub: EtherHub {
-            @display("is=s");
+            @display("p=900,70");
         }
         hhost[h]: EtherHost {
-            @display("is=s");
+            @display("p=1050,70,col,70");
         }
         bus: EtherBus {
             parameters:
                 positions = "5 10 15"; // every 5 meters
                 propagationSpeed = 2e8 mps;  // 1us = 200m
-                @display("b=424,6;o=#408060");
+                @display("b=800,5;o=#408060;p=450,260");
         }
         bhost[b]: EtherHost {
             parameters:
-                @display("is=s;p=,r");
+                @display("p=100,300,row,100");
         }
     connections:
         for i=0..n-1 {

@@ -288,7 +288,7 @@ network SwitchedDuplexLAN
     submodules:
         hostA: EtherHostFullDuplex {
             parameters:
-                @display("p=250,50;i=misc/desktoppc");
+                @display("p=250,50");
         }
         hostB: EtherHostFullDuplex {
             parameters:

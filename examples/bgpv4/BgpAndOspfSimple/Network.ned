@@ -59,7 +59,7 @@ network BgpAndOspfSimpleExample
                 ethg[1];
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=100,80");
+            @display("p=100,80;is=s");
             config = xmldoc("IPv4Config.xml");
             //assignAddresses = false;
             //assignDisjunctSubnetAddresses = false;

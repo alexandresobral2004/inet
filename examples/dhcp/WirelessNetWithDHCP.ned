@@ -33,7 +33,7 @@ network WirelessNetWithDHCP
     **.mgmt.numChannels = 5;
     submodules:
         radioMedium: Ieee80211ScalarRadioMedium {
-            @display("p=100,50");
+            @display("p=100,140;is=s");
         }
         gateway: Router {
             @display("p=550,150");
@@ -49,7 +49,7 @@ network WirelessNetWithDHCP
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                @display("p=100,130");
+                @display("p=100,70;is=s");
         }
         remote: StandardHost {
             @display("p=700,150");

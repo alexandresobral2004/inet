@@ -40,37 +40,37 @@ module DSQueue1 like IOutputQueue
     submodules:
         classifier: BehaviorAggregateClassifier {
             dscps = "EF AF11 AF21 AF31 AF41";
-            @display("p=41,284");
+            @display("p=100,320");
         }
         efQueue: DropTailQueue {
             frameCapacity = frameCapacity;
-            @display("p=195,95");
+            @display("p=250,70");
         }
         af1xQueue: DropTailQueue {
             frameCapacity = frameCapacity;
-            @display("p=195,224");
+            @display("p=250,170");
         }
         af2xQueue: DropTailQueue {
             frameCapacity = frameCapacity;
-            @display("p=195,329");
+            @display("p=250,270");
         }
         af3xQueue: DropTailQueue {
             frameCapacity = frameCapacity;
-            @display("p=195,421");
+            @display("p=250,370");
         }
         af4xQueue: DropTailQueue {
             frameCapacity = frameCapacity;
-            @display("p=195,537");
+            @display("p=250,470");
         }
         beQueue: DropTailQueue {
             frameCapacity = frameCapacity;
-            @display("p=195,628");
+            @display("p=250,570");
         }
         wrr: WrrScheduler {
-            @display("p=384,368");
+            @display("p=400,320");
         }
         priority: PriorityScheduler {
-            @display("p=556,263");
+            @display("p=550,320");
         }
 
     connections:

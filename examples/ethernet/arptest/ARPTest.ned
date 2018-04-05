@@ -36,28 +36,28 @@ network ARPTest
         }
     submodules:
         client: StandardHost {
-            @display("p=250,50;i=device/laptop");
+            @display("p=250,80;i=device/laptop");
         }
         host1: StandardHost {
-            @display("p=250,150;i=device/pc");
+            @display("p=250,180;i=device/pc");
         }
         host2: StandardHost {
-            @display("p=250,250;i=device/pc");
+            @display("p=250,280;i=device/pc");
         }
         switch: EtherSwitch {
-            @display("p=400,150");
+            @display("p=400,180");
         }
         net: Router {
-            @display("p=700,150");
+            @display("p=700,180");
         }
         router: Router {
-            @display("p=550,150");
+            @display("p=550,180");
         }
         server: StandardHost {
-            @display("p=850,150;i=device/server_l");
+            @display("p=850,180;i=device/server");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=100,50");
+            @display("p=100,80;is=s");
         }
     connections:
         client.ethg++ <--> ethline <--> switch.ethg++;

@@ -38,20 +38,20 @@ module DSQueue2 like IOutputQueue
     submodules:
         classifier: BehaviorAggregateClassifier {
             dscps = "AF11 AF12 AF13";
-            @display("p=50,181");
+            @display("p=100,170");
         }
         red: RedDropper {
             numGates = 3;
-            @display("p=142,94");
+            @display("p=250,70");
         }
         afQueue: FifoQueue {
-            @display("p=266,94");
+            @display("p=400,70");
         }
         beQueue: DropTailQueue {
-            @display("p=204,277");
+            @display("p=325,270");
         }
         wrr: WrrScheduler {
-            @display("p=347,181");
+            @display("p=550,170");
         }
     connections:
         in --> classifier.in;
