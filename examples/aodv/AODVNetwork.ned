@@ -28,28 +28,29 @@ network AODVNetwork
 {
     parameters:
         int numHosts;
+        @display("bgb=650,650");
     submodules:
         radioMedium: UnitDiskRadioMedium {
             parameters:
-                @display("p=50,50");
+                @display("p=100,50");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
                 config = xml("<config><interface hosts='*' address='145.236.x.x' netmask='255.255.0.0'/></config>");
-                @display("p=50,100");
+                @display("p=100,130");
         }
         routingTableRecorder: RoutingTableRecorder {
             parameters:
-                @display("p=50,150");
+                @display("p=100,210;is=s");
         }
         scenarioManager: ScenarioManager {
             parameters:
                 script = default(xml("<scenario/>"));
-                @display("p=50,250");
+                @display("p=100,370");
         }
         host[numHosts]: AodvRouter {
             parameters:
-                @display("i=device/pocketpc_s;r=,,#707070");
+                @display("i=device/pocketpc_s;r=,,#707070;p=350,300");
         }
     connections allowunconnected:
 }
