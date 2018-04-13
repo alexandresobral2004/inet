@@ -51,7 +51,7 @@ import inet.physicallayer.contract.bitlevel.IPulseFilter;
 module ApskLayeredReceiver like IReceiver
 {
     parameters:
-        string levelOfDetail @enum("packet", "bit", "symbol", "sample") = default("symbol");
+        string levelOfDetail @enum("packet","bit","symbol","sample") = default("symbol");
         string errorModelType = default("ApskLayeredErrorModel");
         string decoderType = default("ApskDecoder");
         string demodulatorType = default("ApskDemodulator");
@@ -67,18 +67,18 @@ module ApskLayeredReceiver like IReceiver
 
     submodules:
         decoder: <decoderType> like IDecoder if decoderType != "" {
-            @display("p=100,50");
+            @display("p=100,80");
         }
         demodulator: <demodulatorType> like IDemodulator {
-            @display("p=100,150");
+            @display("p=100,180");
         }
         pulseFilter: <pulseFilterType> like IPulseFilter if pulseFilterType != "" {
-            @display("p=100,250");
+            @display("p=100,280");
         }
         analogDigitalConverter: <analogDigitalConverterType> like IAnalogDigitalConverter if analogDigitalConverterType != "" {
-            @display("p=100,350");
+            @display("p=100,380");
         }
         errorModel: <errorModelType> like ILayeredErrorModel if errorModelType != "" {
-            @display("p=100,450");
+            @display("p=100,480");
         }
 }

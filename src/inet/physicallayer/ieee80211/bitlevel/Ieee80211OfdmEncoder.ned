@@ -44,12 +44,12 @@ module Ieee80211OfdmEncoder like IEncoder
 
     submodules:
         fecEncoder: <fecType> like IFecCoder if fecType != "" {
-            @display("p=66,156");
+            @display("p=100,180");
         }
         scrambler: <scramblerType> like IScrambler if scramblerType != "" {
-            @display("p=66,73");
+            @display("p=100,80");
         }
         interleaver: <interleaverType> like IInterleaver if interleaverType != "" {
-            @display("p=66,238");
+            @display("p=100,280");
         }
 }

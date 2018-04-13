@@ -73,34 +73,34 @@ module RadioMedium like IRadioMedium
     submodules:
         propagation: <propagationType> like IPropagation {
             parameters:
-                @display("p=100,50");
+                @display("p=100,80");
         }
         analogModel: <analogModelType> like IAnalogModel {
             parameters:
-                @display("p=100,150");
+                @display("p=100,180");
         }
         backgroundNoise: <backgroundNoiseType> like IRadioBackgroundNoise if backgroundNoiseType != "" {
             parameters:
-                @display("p=100,250");
+                @display("p=100,280");
         }
         pathLoss: <pathLossType> like IPathLoss {
             parameters:
-                @display("p=300,50");
+                @display("p=300,80");
         }
         obstacleLoss: <obstacleLossType> like IObstacleLoss if obstacleLossType != "" {
             parameters:
-                @display("p=300,150");
+                @display("p=300,180");
         }
         mediumLimitCache: <mediumLimitCacheType> like IMediumLimitCache {
             parameters:
-                @display("p=500,50");
+                @display("p=500,80");
         }
         communicationCache: <communicationCacheType> like ICommunicationCache {
             parameters:
-                @display("p=500,250");
+                @display("p=500,280");
         }
         neighborCache: <neighborCacheType> like INeighborCache if neighborCacheType != "" {
             parameters:
-                @display("p=500,150");
+                @display("p=500,180");
         }
 }

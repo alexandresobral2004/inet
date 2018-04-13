@@ -40,12 +40,12 @@ module ApskEncoder like IEncoder
 
     submodules:
         scrambler: <scramblerType> like IScrambler if scramblerType != "" {
-            @display("p=100,50");
+            @display("p=100,80");
         }
         fecEncoder: <fecType> like IFecCoder if fecType != "" {
-            @display("p=100,150");
+            @display("p=100,180");
         }
         interleaver: <interleaverType> like IInterleaver if interleaverType != "" {
-            @display("p=100,250");
+            @display("p=100,280");
         }
 }

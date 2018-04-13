@@ -28,7 +28,7 @@ import inet.routing.pim.tables.PimNeighborTable;
 module Pim like IPim
 {
     parameters:
-        @display("i=block/network2;bgl=4;bgb=350,207");
+        @display("i=block/network2");
         string interfaceTableModule;
         string routingTableModule;
         *.interfaceTableModule = default(absPath(interfaceTableModule));
@@ -43,27 +43,27 @@ module Pim like IPim
     submodules:
         pimSplitter: PimSplitter {
             parameters:
-                @display("p=69,95");
+                @display("p=100,130");
         }
 
         pimDM: PimDm {
             parameters:
-                @display("p=165,142");
+                @display("p=250,180");
         }
 
         pimSM: PimSm {
             parameters:
-                @display("p=165,56");
+                @display("p=250,80");
         }
 
         pimInterfaceTable: PimInterfaceTable {
             parameters:
-                @display("p=268,56");
+                @display("p=400,80");
         }
 
         pimNeighborTable: PimNeighborTable {
             parameters:
-                @display("p=268,142");
+                @display("p=400,180");
         }
 
     connections:

@@ -40,12 +40,12 @@ module ApskDecoder like IDecoder
 
     submodules:
         deinterleaver: <deinterleaverType> like IInterleaver if deinterleaverType != "" {
-            @display("p=100,50");
+            @display("p=100,80");
         }
         fecDecoder: <fecType> like IFecCoder if fecType != "" {
-            @display("p=100,150");
+            @display("p=100,180");
         }
         descrambler: <descramblerType> like IScrambler if descramblerType != "" {
-            @display("p=100,250");
+            @display("p=100,280");
         }
 }

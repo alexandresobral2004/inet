@@ -51,7 +51,7 @@ import inet.physicallayer.contract.bitlevel.IPulseShaper;
 module ApskLayeredTransmitter like ITransmitter
 {
     parameters:
-        string levelOfDetail @enum("packet", "bit", "symbol", "sample") = default("symbol");
+        string levelOfDetail @enum("packet","bit","symbol","sample") = default("symbol");
         string encoderType = default("ApskEncoder");
         string modulatorType = default("ApskModulator");
         string pulseShaperType = default("");
@@ -65,15 +65,15 @@ module ApskLayeredTransmitter like ITransmitter
 
     submodules:
         encoder: <encoderType> like IEncoder if encoderType != "" {
-            @display("p=100,50");
+            @display("p=100,80");
         }
         modulator: <modulatorType> like IModulator {
-            @display("p=100,150");
+            @display("p=100,180");
         }
         pulseShaper: <pulseShaperType> like IPulseShaper if pulseShaperType != "" {
-            @display("p=100,250");
+            @display("p=100,280");
         }
         digitalAnalogConverter: <digitalAnalogConverterType> like IDigitalAnalogConverter if digitalAnalogConverterType != "" {
-            @display("p=100,350");
+            @display("p=100,380");
         }
 }
