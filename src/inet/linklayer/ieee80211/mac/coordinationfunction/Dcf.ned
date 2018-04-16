@@ -53,49 +53,49 @@ module Dcf
     submodules:
         channelAccess: Dcaf {
             parameters:
-                @display("p=100,100");
+                @display("p=100,70");
         }
         originatorMacDataService: OriginatorMacDataService {
             parameters:
-                @display("p=100,200");
+                @display("p=100,160");
         }
         recipientMacDataService: RecipientMacDataService {
             parameters:
-                @display("p=100,300");
+                @display("p=100,250");
         }
         rateSelection: RateSelection {
             parameters:
                 rateControlModule = "^.rateControl";
-                @display("p=300,100");
+                @display("p=300,70");
         }
         rateControl: <rateControlType> like IRateControl if rateControlType != "" {
             parameters:
-                @display("p=300,200");
+                @display("p=300,160");
         }
         recoveryProcedure: NonQosRecoveryProcedure {
             parameters:
                 cwCalculatorModule = "^.channelAccess";
                 rtsPolicyModule = "^.rtsPolicy";
-                @display("p=300,300");
+                @display("p=300,250");
         }
         originatorProtectionMechanism: OriginatorProtectionMechanism {
             parameters:
-                @display("p=300,400");
+                @display("p=300,340");
         }
         originatorAckPolicy: OriginatorAckPolicy {
             parameters:
-                @display("p=500,100");
+                @display("p=500,70");
         }
         recipientAckPolicy: RecipientAckPolicy {
             parameters:
-                @display("p=500,200");
+                @display("p=500,160");
         }
         rtsPolicy: RtsPolicy {
             parameters:
-                @display("p=500,300");
+                @display("p=500,250");
         }
         ctsPolicy: CtsPolicy {
             parameters:
-                @display("p=500,400");
+                @display("p=500,340");
         }
 }

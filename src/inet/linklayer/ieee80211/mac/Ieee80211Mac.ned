@@ -97,27 +97,27 @@ module Ieee80211Mac extends MacProtocolBase like IIeee80211Mac
     submodules:
         dcf: Dcf {
             parameters:
-                @display("p=100,100");
+                @display("p=100,70");
         }
         hcf: Hcf {
             parameters:
-                @display("p=250,100");
+                @display("p=250,70");
         }
         ds: Ds {
             parameters:
-                @display("p=400,100");
+                @display("p=400,70");
         }
         rx: <default("Rx")> like IRx {
             parameters:
-                @display("p=100,200");
+                @display("p=100,160");
         }
         tx: <default("Tx")> like ITx {
             parameters:
-                @display("p=250,200");
+                @display("p=250,160");
         }
         statistics: <default("BasicStatistics")> like IStatistics {
             parameters:
-                @display("p=400,200");
+                @display("p=400,160");
         }
 }
 

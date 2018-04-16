@@ -61,11 +61,11 @@ module AckingWirelessInterface like IWirelessInterface
         }
         mac: AckingMac {
             parameters:
-                @display("p=250,250");
+                @display("p=250,200");
         }
         radio: <radioType> like IRadio {
             parameters:
-                @display("p=250,400");
+                @display("p=250,350");
         }
     connections:
         upperLayerIn --> { @display("m=n"); } --> queue.in;

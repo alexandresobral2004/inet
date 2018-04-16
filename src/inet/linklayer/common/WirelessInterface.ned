@@ -45,7 +45,7 @@ module WirelessInterface like IWirelessInterface
             @display("p=100,200");
         }
         radio: <radioType> like IRadio if radioType != "" {
-            @display("p=100,300");
+            @display("p=100,350");
         }
     connections allowunconnected:
         radioIn --> { @display("m=s"); } --> radio.radioIn if radioType != "";

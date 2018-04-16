@@ -32,14 +32,14 @@ module OriginatorQosMacDataService
     submodules:
         msduAggregationPolicy: <aMsduAggregationPolicyType> like IMsduAggregationPolicy if aMsduAggregationPolicyType != "" {
             parameters:
-                @display("p=100,100");
+                @display("p=100,70");
         }
         mpduAggregationPolicy: <aMpduAggregationPolicyType> like IMpduAggregationPolicy if aMpduAggregationPolicyType != "" {
             parameters:
-                @display("p=100,300");
+                @display("p=100,250");
         }
         fragmentationPolicy: <fragmentationPolicyType> like IFragmentationPolicy if fragmentationPolicyType != "" {
             parameters:
-                @display("p=100,200");
+                @display("p=100,160");
         }
 }
