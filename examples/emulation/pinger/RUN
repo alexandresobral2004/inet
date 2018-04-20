@@ -1,0 +1,5 @@
+
+# inet_dbg -p -u Cmdenv
+
+
+sudo /home/zoli/Projects/OMNET/DEVEL/omnetpp/bin/opp_run_dbg -l /home/zoli/Projects/OMNET/inet/bin/../src/../src/INET -n /home/zoli/Projects/OMNET/inet/src:/home/zoli/Projects/OMNET/inet/tutorials:/home/zoli/Projects/OMNET/inet/showcases:/home/zoli/Projects/OMNET/inet/examples --image-path=/home/zoli/Projects/OMNET/inet/images -u Cmdenv -f omnetpp.ini
