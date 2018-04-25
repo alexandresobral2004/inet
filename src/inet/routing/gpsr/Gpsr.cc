@@ -96,6 +96,9 @@ void Gpsr::initialize(int stage)
         mobility = check_and_cast<IMobility *>(host->getSubmodule("mobility"));
         routingTable = getModuleFromPar<IRoutingTable>(par("routingTableModule"), this);
         networkProtocol = getModuleFromPar<INetfilter>(par("networkProtocolModule"), this);
+
+        displayBubbles = par("displayBubbles");
+
         // internal
         beaconTimer = new cMessage("BeaconTimer");
         purgeNeighborsTimer = new cMessage("PurgeNeighborsTimer");
