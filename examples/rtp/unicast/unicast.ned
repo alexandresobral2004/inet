@@ -22,6 +22,7 @@ network RTPNetwork
                 destinationAddress = "receiver";
                 portNumber = 5004;
                 bandwidth = 8000;
+                @display("p=250,70");
         }
         receiver: RtpHost {
             parameters:
@@ -29,8 +30,11 @@ network RTPNetwork
                 destinationAddress = "sender";
                 portNumber = 5004;
                 bandwidth = 8000;
+                @display("p=400,70");
         }
-        configurator: Ipv4NetworkConfigurator;
+        configurator: Ipv4NetworkConfigurator {
+            @display("p=100,70;is=s");
+        }
     connections:
         sender.pppg++ <--> ethernet <--> receiver.pppg++;
 }

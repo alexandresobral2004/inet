@@ -26,26 +26,25 @@ import inet.visualizer.contract.IIntegratedVisualizer;
 network Crosstalk
 {
     parameters:
-        @display("b=300,200");
     submodules:
         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
             parameters:
-                @display("p=100,50");
+                @display("p=100,210;is=s");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                @display("p=100,150");
+                @display("p=100,70;is=s");
         }
         radioMedium: Ieee80211DimensionalRadioMedium {
             parameters:
-                @display("p=100,250");
+                @display("p=100,140;is=s");
         }
         aNode[2]: AdhocHost {
             parameters:
-                @display("r=,,#707070");
+                @display("r=,,#707070;p=400,140,col,90");
         }
         bNode[2]: AdhocHost {
             parameters:
-                @display("r=,,#707070");
+                @display("r=,,#707070;p=250,140,col,90");
         }
 }
