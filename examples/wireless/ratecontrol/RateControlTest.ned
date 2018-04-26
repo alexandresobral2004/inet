@@ -37,19 +37,21 @@ module SinkClient
     gates:
         input radioIn @directIn;
     submodules:
-        interfaceTable: InterfaceTable;
+        interfaceTable: InterfaceTable {
+            @display("p=100,70;is=s");
+        }
         sink: Sink {
             parameters:
-                @display("p=169,124");
+                @display("p=300,70");
         }
         wlan: Ieee80211Interface {
             parameters:
-                @display("p=89,225;q=queue");
+                @display("p=250,160;q=queue");
                 mgmtType = default("Ieee80211MgmtAdhoc");
         }
         mobility: RectangleMobility {
             parameters:
-                @display("p=71,121");
+                @display("p=100,140;is=s");
         }
     connections allowunconnected:
         radioIn --> { @display("m=s"); } --> wlan.radioIn;
@@ -66,20 +68,22 @@ module Client
         input radioIn @directIn;
 
     submodules:
-        interfaceTable: InterfaceTable;
+        interfaceTable: InterfaceTable {
+            @display("p=100,70;is=s");
+        }
         cli: EtherAppClient {
             parameters:
                 registerSAP = false;
-                @display("b=40,24;p=180,60,col");
+                @display("p=300,70");
         }
         wlan: Ieee80211Interface {
             parameters:
-                @display("p=112,134;q=queue");
+                @display("p=250,160;q=queue");
                 mgmtType = default("Ieee80211MgmtAdhoc");
         }
         mobility: RectangleMobility {
             parameters:
-                @display("p=50,141");
+                @display("p=100,140;is=s");
         }
     connections allowunconnected:
         wlan.radioIn <-- radioIn;
@@ -102,11 +106,11 @@ network RateControlTest
         }
         physicalEnvironment: PhysicalEnvironment {
             parameters:
-                @display("p=50,50");
+                @display("p=100,70;is=s");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=61,46");
+                @display("p=100,140;is=s");
         }
 }
 

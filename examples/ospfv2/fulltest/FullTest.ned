@@ -26,10 +26,10 @@ module OspfLan
         inout ethg[];
     submodules:
         hub: EtherHub {
-            @display("is=s");
+            @display("p=100,70");
         }
         host[h]: StandardHost {
-            @display("is=s");
+            @display("p=250,70");
         }
     connections:
         for i=0..sizeof(ethg)-1 {
@@ -166,7 +166,7 @@ module OSPF_Area3
         }
         H1: StandardHost {
             parameters:
-                @display("p=64,360;i=device/pc_s");
+                @display("p=64,360;i=device/pc");
         }
     connections:
         RT9.ethg[1] <--> C <--> N9.ethg++;
@@ -186,77 +186,77 @@ network OSPF_RFC2328_Fig6
     submodules:
         Area1: OSPF_Area1 {
             parameters:
-                @display("p=120,172;b=176,168");
+                @display("p=250,205;b=150,150");
         }
         Area2: OSPF_Area2 {
             parameters:
-                @display("p=448,468;b=176,168");
+                @display("p=650,500;b=150,150");
         }
         Area3: OSPF_Area3 {
             parameters:
-                @display("p=128,468;b=176,168");
+                @display("p=250,500;b=150,150");
         }
         RT3: OspfRouter {
             parameters:
-                @display("p=276,208");
+                @display("p=450,250");
             gates:
                 ethg[3];
         }
         RT4: OspfRouter {
             parameters:
-                @display("p=276,144");
+                @display("p=450,160");
             gates:
                 ethg[2];
         }
         RT5: OspfRouter {
             parameters:
-                @display("p=496,144");
+                @display("p=700,160");
             gates:
                 ethg[6];
         }
         RT6: OspfRouter {
             parameters:
-                @display("p=424,208");
+                @display("p=600,250");
             gates:
                 ethg[3];
         }
         RT7: OspfRouter {
             parameters:
-                @display("p=496,328");
+                @display("p=700,340");
             gates:
                 ethg[4];
         }
         RT10: OspfRouter {
             parameters:
-                @display("p=424,328");
+                @display("p=600,340");
             gates:
                 ethg[3];
         }
         RT11: OspfRouter {
             parameters:
-                @display("p=284,468");
+                @display("p=450,500");
             gates:
                 ethg[2];
         }
         N12: OspfLan {
             parameters:
                 h = 1;
-                @display("p=620,277");
+                @display("p=850,250;is=l");
         }
         N13: OspfLan {
             parameters:
                 h = 1;
-                @display("p=620,97");
+                @display("p=850,70;is=l");
         }
         N14: OspfLan {
             parameters:
                 h = 1;
-                @display("p=496,42");
+                @display("p=550,70;is=l");
         }
         N15: OspfLan {
             parameters:
                 h = 1;
-                @display("p=608,356");
+                @display("p=850,420;is=l");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
@@ -288,7 +288,7 @@ network OSPF_RFC2328_Fig6
                             "</config>"+"\n");
                 addStaticRoutes = false;
                 addDefaultRoutes = false;
-                @display("p=120,43");
+                @display("p=100,70;is=s");
         }
     connections:
         RT3.ethg[0] <--> C <--> Area1.ethg[1];

@@ -18,32 +18,32 @@ network BgpUpdateMessageExample
     submodules:
         A: BGPRouterEx {
             parameters:
-                @display("p=400,80");
+                @display("p=400,70");
             gates:
                 pppg[1];
                 ethg[1];
         }
         B: BGPRouterEx {
             parameters:
-                @display("p=550,80");
+                @display("p=550,70");
             gates:
                 pppg[1];
                 ethg[1];
         }
         H1: StandardHost {
             parameters:
-                @display("p=250,80;i=device/laptop");
+                @display("p=250,70;i=device/laptop");
             gates:
                 ethg[1];
         }
         H2: StandardHost {
             parameters:
-                @display("p=700,80;i=device/laptop");
+                @display("p=700,70;i=device/laptop");
             gates:
                 ethg[1];
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=100,80;is=s");
+            @display("p=100,70;is=s");
             config = xmldoc("IPv4Config.xml");
             //assignAddresses = false;
             //assignDisjunctSubnetAddresses = false;

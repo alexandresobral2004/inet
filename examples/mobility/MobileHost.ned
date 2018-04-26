@@ -29,12 +29,12 @@ module MobileHost
     parameters:
         string mobilityType = default("StationaryMobility");
         @networkNode();
-        @display("i=device/pocketpc_s");
+        @display("i=device/pocketpc");
         @statistic[coordX](title="coord X"; source="xCoord(mobilityPos(mobilityStateChanged))"; record=vector; interpolationmode=linear);
         @statistic[coordY](title="coord Y"; source="yCoord(mobilityPos(mobilityStateChanged))"; record=vector; interpolationmode=linear);
         @statistic[coordZ](title="coord Z"; source="zCoord(mobilityPos(mobilityStateChanged))"; record=vector; interpolationmode=linear);
     submodules:
         mobility: <mobilityType> like IMobility {
-            @display("p=150,150");
+            @display("p=70,70;is=s");
         }
 }

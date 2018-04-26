@@ -63,6 +63,6 @@ network MoBANNetwork
         }
         coordinator[numMoBAN]: MoBanCoordinator {
             parameters:
-                @display("i=block/wheelbarrow");
+                @display("i=block/wheelbarrow;p=100,70;is=s");
         }
 }

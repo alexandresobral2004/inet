@@ -30,7 +30,7 @@ network QosThroughput
         @display("b=297,203");
     submodules:
         configurator: Ipv4NetworkConfigurator {
-            @display("p=61,164");
+            @display("p=100,70;is=s");
         }
         ap: AccessPoint {
             parameters:
@@ -46,7 +46,7 @@ network QosThroughput
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=61,46");
+                @display("p=100,140;is=s");
         }
 }
 

@@ -30,59 +30,59 @@ network RSVPTE4
     submodules:
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                @display("p=115,50");
+                @display("p=100,70;is=s");
         }
         LSR1: RsvpMplsRouter {
             parameters:
-                @display("p=160,167");
+                @display("p=400,200");
         }
         LSR2: RsvpMplsRouter {
             parameters:
-                @display("p=254,255");
+                @display("p=500,300");
         }
         LSR3: RsvpMplsRouter {
             parameters:
-                @display("p=253,78");
+                @display("p=500,100");
         }
         LSR4: RsvpMplsRouter {
             parameters:
-                @display("p=358,167");
+                @display("p=600,200");
         }
         LSR5: RsvpMplsRouter {
             parameters:
-                @display("p=460,167");
+                @display("p=800,200");
         }
         LSR6: RsvpMplsRouter {
             parameters:
-                @display("p=400,300");
+                @display("p=700,330");
         }
         LSR7: RsvpMplsRouter {
             parameters:
-                @display("p=400,50");
+                @display("p=700,70");
         }
         host1: StandardHost { // client
             parameters:
-                @display("p=71,80;i=device/pc2");
+                @display("p=250,100;i=device/pc2");
         }
         host2: StandardHost { // client
             parameters:
-                @display("p=72,153;i=device/pc2");
+                @display("p=250,200;i=device/pc2");
         }
         host3: StandardHost { // server
             parameters:
-                @display("p=570,88;i=device/server");
+                @display("p=900,100;i=device/server");
         }
         host4: StandardHost { // server
             parameters:
-                @display("p=562,256;i=device/server");
+                @display("p=900,300;i=device/server");
         }
         host5: StandardHost { // client
             parameters:
-                @display("p=73,233;i=device/pc2");
+                @display("p=250,300;i=device/pc2");
         }
         scenarioManager: ScenarioManager {
             parameters:
-                @display("p=195,50");
+                @display("p=100,210;is=s");
         }
     connections:
         LSR1.pppg++ <--> {  delay = 15ms; datarate = 600kbps; } <--> LSR2.pppg++;

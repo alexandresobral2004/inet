@@ -52,7 +52,7 @@ network SimpleRREQ
         }
         sender: AodvRouter {
             parameters:
-                @display("i=device/pocketpc_s;r=,,#707070;p=400,50");
+                @display("i=device/pocketpc_s;r=,,#707070;p=400,70");
         }
         intermediateNode: AodvRouter {
             parameters:
@@ -60,7 +60,7 @@ network SimpleRREQ
         }
         receiver: AodvRouter {
             parameters:
-                @display("i=device/pocketpc_s;r=,,#707070;p=400,370");
+                @display("i=device/pocketpc_s;r=,,#707070;p=400,350");
         }
     connections allowunconnected:
 }
@@ -93,19 +93,19 @@ network SimpleRREQ2
         }
         sender: AodvRouter {
             parameters:
-                @display("i=device/pocketpc_s;r=,,#707070;p=400,50");
+                @display("i=device/pocketpc_s;r=,,#707070;p=400,70");
         }
         intermediateNodeA: AodvRouter {
             parameters:
-                @display("i=device/pocketpc_s;r=,,#707070;p=300,200");
+                @display("i=device/pocketpc_s;r=,,#707070;p=300,210");
         }
         intermediateNodeB: AodvRouter {
             parameters:
-                @display("i=device/pocketpc_s;r=,,#707070;p=500,200");
+                @display("i=device/pocketpc_s;r=,,#707070;p=500,210");
         }
         receiver: AodvRouter {
             parameters:
-                @display("i=device/pocketpc_s;r=,,#707070;p=400,370");
+                @display("i=device/pocketpc_s;r=,,#707070;p=400,350");
         }
     connections allowunconnected:
 }
@@ -138,7 +138,7 @@ network ShortestPath
         }
         sender: AodvRouter {
             parameters:
-                @display("i=device/pocketpc_s;r=,,#707070;p=400,50");
+                @display("i=device/pocketpc_s;r=,,#707070;p=400,70");
         }
         intermediateNodeA: AodvRouter {
             parameters:

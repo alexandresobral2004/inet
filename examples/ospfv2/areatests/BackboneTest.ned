@@ -12,10 +12,11 @@ network OSPF_BackboneTest
         Backbone: TestArea {
             parameters:
                 numHosts = 10;
-                @display("p=138,156;b=136,136");
+                @display("p=300,105;b=100,100");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
+                //                            "<route hosts='Backbone.R[*]' destination='224.0.0.0' netmask='240.0.0.0' interface='eth0' />"+
                 //                            "<route hosts='Backbone.R[*]' destination='224.0.0.0' netmask='240.0.0.0' interface='eth0' />"+
                 config = xml("<config>"+
                             "<interface hosts='Backbone.*' address='192.168.1.x' netmask='255.255.255.x' />"+
@@ -27,10 +28,10 @@ network OSPF_BackboneTest
                             "</config>");
                 addStaticRoutes = false;
                 addDefaultRoutes = false;
-                @display("p=75,43");
+                @display("p=100,70;is=s");
         }
         scenarioManager: ScenarioManager {
-            @display("p=187,43");
+            @display("p=100,140;is=s");
         }
 }
 

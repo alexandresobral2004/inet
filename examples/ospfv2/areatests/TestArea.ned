@@ -24,11 +24,17 @@ module TestArea
         }
     submodules:
         H[numHosts]: StandardHost {
-            @display("i=device/laptop");
+            @display("i=device/laptop;p=100,380,row,100");
         }
-        N[numHosts]: EtherHub;
-        R[numHosts]: OspfRouter;
-        B[extGates]: OspfRouter;
+        N[numHosts]: EtherHub {
+            @display("p=100,280,row,100");
+        }
+        R[numHosts]: OspfRouter {
+            @display("p=100,180,row,100");
+        }
+        B[extGates]: OspfRouter {
+            @display("p=100,80,row,100");
+        }
     connections:
         // host to router links
         for i=0..numHosts-1 {

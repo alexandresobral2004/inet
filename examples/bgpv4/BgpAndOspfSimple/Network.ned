@@ -22,44 +22,44 @@ network BgpAndOspfSimpleExample
     submodules:
         A: BgpRouter {
             parameters:
-                @display("p=550,80");
+                @display("p=550,70");
             gates:
                 pppg[2];
         }
         B: BgpRouter {
             parameters:
-                @display("p=700,80");
+                @display("p=700,70");
             gates:
                 pppg[2];
         }
         RA1: OspfRouter {
             parameters:
-                @display("p=400,80;i=device/router");
+                @display("p=400,70;i=device/router");
             gates:
                 pppg[1];
                 ethg[1];
         }
         RB1: OspfRouter {
             parameters:
-                @display("p=850,80;i=device/router");
+                @display("p=850,70;i=device/router");
             gates:
                 pppg[1];
                 ethg[1];
         }
         HA11: StandardHost {
             parameters:
-                @display("p=250,80;i=device/pc");
+                @display("p=250,70;i=device/pc");
             gates:
                 ethg[1];
         }
         HB11: StandardHost {
             parameters:
-                @display("p=1000,80;i=device/pc");
+                @display("p=1000,70;i=device/pc");
             gates:
                 ethg[1];
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=100,80;is=s");
+            @display("p=100,70;is=s");
             config = xmldoc("IPv4Config.xml");
             //assignAddresses = false;
             //assignDisjunctSubnetAddresses = false;

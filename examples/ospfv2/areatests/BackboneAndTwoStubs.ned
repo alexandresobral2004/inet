@@ -12,7 +12,6 @@ network OSPF_BackboneAndTwoStubsTest
 {
     parameters:
         int numBBRouters = default(3);
-        @display("bgb=561,300");
     types:
         channel C extends ThruputMeteringChannel
         {
@@ -21,18 +20,20 @@ network OSPF_BackboneAndTwoStubsTest
             thruputDisplayFormat = "#N";
         }
     submodules:
-        BBR[numBBRouters]: OspfRouter;
+        BBR[numBBRouters]: OspfRouter {
+            @display("p=450,105,col,90");
+        }
         Stub1: TestArea {
             parameters:
                 numHosts = 2;
                 extGates = 1;
-                @display("p=138,156;b=136,136");
+                @display("p=300,105;b=100,100");
         }
         Stub2: TestArea {
             parameters:
                 numHosts = 2;
                 extGates = 1;
-                @display("p=409,156;b=136,136");
+                @display("p=600,105;b=100,100");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
@@ -50,10 +51,10 @@ network OSPF_BackboneAndTwoStubsTest
                             "</config>");
                 addStaticRoutes = false;
                 addDefaultRoutes = false;
-                @display("p=75,43");
+                @display("p=100,70;is=s");
         }
         scenarioManager: ScenarioManager {
-            @display("p=187,43");
+            @display("p=100,140;is=s");
         }
     connections:
         BBR[0].ethg++ <--> C <--> Stub1.ethg[0];

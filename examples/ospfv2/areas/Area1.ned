@@ -22,43 +22,43 @@ module TwoNetsArea
     submodules:
         R1: OspfRouter {
             parameters:
-                @display("p=248,124");
+                @display("p=400,160");
             gates:
                 ethg[3];
         }
         N1: EtherHub {
             parameters:
-                @display("p=156,72");
+                @display("p=250,70");
             gates:
                 ethg[2];
         }
         N2: EtherHub {
             parameters:
-                @display("p=160,284");
+                @display("p=250,450");
             gates:
                 ethg[2];
         }
         R3: OspfRouter {
             parameters:
-                @display("p=360,180");
+                @display("p=550,250");
             gates:
                 ethg[3];
         }
         H1: StandardHost {
             parameters:
-                @display("p=56,72;i=device/laptop");
+                @display("p=100,70;i=device/laptop");
             gates:
                 ethg[1];
         }
         H2: StandardHost {
             parameters:
-                @display("p=56,288;i=device/laptop");
+                @display("p=100,450;i=device/laptop");
             gates:
                 ethg[1];
         }
         R2: OspfRouter {
             parameters:
-                @display("p=248,232");
+                @display("p=400,340");
             gates:
                 ethg[3];
         }

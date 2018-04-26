@@ -25,14 +25,14 @@ network ShortcutMacExample
     submodules:
         client: WirelessHost {
             parameters:
-                @display("p=300,100");
+                @display("p=250,70");
         }
         server: WirelessHost {
             parameters:
-                @display("p=600,100");
+                @display("p=400,70");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                @display("p=100,100;is=s");
+                @display("p=100,70;is=s");
         }
 }

@@ -51,17 +51,19 @@ network DiffservNetwork
         }
     submodules:
         router: Router {
-            @display("p=318,108");
+            @display("p=550,70");
         }
-        client[numClients]: StandardHost;
+        client[numClients]: StandardHost {
+            @display("p=250,70,col,70");
+        }
         server: StandardHost {
-            @display("p=436,108");
+            @display("p=700,70");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=181,21");
+            @display("is=s;p=100,70");
         }
         etherSwitch: EtherSwitch {
-            @display("p=198,107");
+            @display("p=400,70");
         }
     connections:
         router.pppg++ <--> dialup <--> server.pppg++;

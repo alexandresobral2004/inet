@@ -36,21 +36,23 @@ module Node
         input radioIn @directIn;
 
     submodules:
-        interfaceTable: InterfaceTable;
+        interfaceTable: InterfaceTable {
+            @display("p=100,70;is=s");
+        }
         cli: EtherAppClient {
             parameters:
                 registerSAP = false;
-                @display("b=40,24;p=180,60,col");
+                @display("p=300,70");
         }
         wlan: Ieee80211Interface {
             parameters:
-                @display("p=112,134;q=queue");
+                @display("p=250,160;q=queue");
                 mgmtType = "Ieee80211MgmtAdhoc";
                 macType = "Ieee80211CompatibleMac";
         }
         mobility: StationaryMobility {
             parameters:
-                @display("p=50,141");
+                @display("p=100,140;is=s");
         }
     connections allowunconnected:
         wlan.radioIn <-- radioIn;
@@ -67,20 +69,22 @@ module SinkNode
         input radioIn @directIn;
 
     submodules:
-        interfaceTable: InterfaceTable;
+        interfaceTable: InterfaceTable {
+            @display("p=100,70;is=s");
+        }
         sink: Sink {
             parameters:
-                @display("p=210,68,col");
+                @display("p=300,70");
         }
         wlan: Ieee80211Interface {
             parameters:
-                @display("p=120,158;q=queue");
+                @display("p=250,160;q=queue");
                 mgmtType = "Ieee80211MgmtAdhoc";
                 macType = "Ieee80211CompatibleMac";
         }
         mobility: StationaryMobility {
             parameters:
-                @display("p=50,141");
+                @display("p=100,140;is=s");
         }
     connections allowunconnected:
         wlan.radioIn <-- radioIn;
@@ -91,23 +95,22 @@ module SinkNode
 network HiddenNode
 {
     parameters:
-        @display("b=297,203;bgb=628,257");
     submodules:
         A: Node {
             parameters:
-                @display("r=,,#707070;p=159,143");
+                @display("r=,,#707070;p=250,70");
         }
         C: Node {
             parameters:
-                @display("r=,,#707070;p=473,143");
+                @display("r=,,#707070;p=550,70");
         }
         B: SinkNode {
             parameters:
-                @display("p=316,143;r=,,#707070");
+                @display("p=400,70;r=,,#707070");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=61,46");
+                @display("p=100,70;is=s");
         }
 }
 

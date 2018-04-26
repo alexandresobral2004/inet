@@ -30,16 +30,16 @@ network ObjectCacheTest
     submodules:
         physicalEnvironment: PhysicalEnvironment {
             parameters:
-                @display("p=50,50");
+                @display("p=100,140;is=s");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=50,150");
+                @display("p=100,210;is=s");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
                 config = xml("<config><interface hosts='*' address='192.168.x.x' netmask='255.255.0.0'/></config>");
-                @display("p=50,250");
+                @display("p=100,70;is=s");
         }
         host[numHosts]: AdhocHost {
             parameters:

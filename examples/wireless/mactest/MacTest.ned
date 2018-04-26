@@ -29,19 +29,19 @@ network MacTest
         @display("b=297,203");
     submodules:
         configurator: Ipv4NetworkConfigurator {
-            @display("p=61,164");
+            @display("p=100,70;is=s");
         }
         srvHost: WirelessHost {
             parameters:
-                @display("r=,,#707070;p=589,111");
+                @display("r=,,#707070;p=400,105");
         }
         cliHost: WirelessHost {
             parameters:
-                @display("r=,,#707070;p=349,111");
+                @display("r=,,#707070;p=250,105");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=61,46");
+                @display("p=100,140;is=s");
         }
 }
 

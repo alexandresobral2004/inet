@@ -162,7 +162,7 @@ network BgpCompleteTestExample
                 ethg[1];
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=100,80;is=s");
+            @display("p=100,70;is=s");
             config = xmldoc("IPv4Config.xml");
             //assignAddresses = false;
             //assignDisjunctSubnetAddresses = false;

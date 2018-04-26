@@ -44,13 +44,13 @@ module BGPRouterSimple
     submodules:
         interfaceTable: InterfaceTable {
             parameters:
-                @display("p=100,80;i=block/table_s");
+                @display("p=100,70;i=block/table_s");
         }
         routingTable: Ipv4RoutingTable {
             parameters:
                 forwarding = true;
                 routerId = "auto";
-                @display("p=100,160;i=block/table2_s");
+                @display("p=100,140;i=block/table2_s");
         }
         bgp: Bgp {
             parameters:

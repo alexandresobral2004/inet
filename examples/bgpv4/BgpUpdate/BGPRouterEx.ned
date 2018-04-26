@@ -50,7 +50,7 @@ module BGPRouterEx
     submodules:
         interfaceTable: InterfaceTable {
             parameters:
-                @display("p=100,80;i=block/table_s");
+                @display("p=100,70;i=block/table_s");
         }
         ospf: Ospf {
             parameters:

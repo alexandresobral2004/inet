@@ -26,6 +26,7 @@ import inet.visualizer.contract.IIntegratedVisualizer;
 network Crosstalk
 {
     parameters:
+        @display("b=300,200");
     submodules:
         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
             parameters:
@@ -41,10 +42,10 @@ network Crosstalk
         }
         aNode[2]: AdhocHost {
             parameters:
-                @display("r=,,#707070;p=400,140,col,90");
+                @display("r=,,#707070;p=400,140,col,100");
         }
         bNode[2]: AdhocHost {
             parameters:
-                @display("r=,,#707070;p=250,140,col,90");
+                @display("r=,,#707070;p=250,140,col,100");
         }
 }

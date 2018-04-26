@@ -30,7 +30,7 @@ network R37
     submodules:
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                @display("p=100,100");
+                @display("p=100,70;is=s");
         }
         LSR0: RsvpMplsRouter {
             parameters:

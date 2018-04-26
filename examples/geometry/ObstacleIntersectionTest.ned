@@ -30,16 +30,16 @@ network ObstacleIntersectionTest
     submodules:
         physicalEnvironment: PhysicalEnvironment {
             parameters:
-                @display("p=100,100;is=s");
+                @display("is=s;p=100,140");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=100,200");
+                @display("is=s;p=100,210");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
                 config = xml("<config><interface hosts='*' address='192.168.x.x' netmask='255.255.0.0'/></config>");
-                @display("p=100,300");
+                @display("is=s;p=100,70");
         }
         host[numHosts]: AdhocHost {
             parameters:

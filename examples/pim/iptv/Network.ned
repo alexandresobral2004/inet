@@ -30,98 +30,98 @@ network Network
 {
     submodules:
         R00: MulticastRouter {
-            @display("p=150,50");
+            @display("p=400,70");
             gates:
                 ethg[4];
         }
         R01: MulticastRouter {
-            @display("p=150,125");
+            @display("p=400,160");
             gates:
                 ethg[4];
         }
         R02: MulticastRouter {
-            @display("p=150,200");
+            @display("p=400,250");
             gates:
                 ethg[4];
         }
         R03: MulticastRouter {
-            @display("p=150,275");
+            @display("p=400,340");
             gates:
                 ethg[4];
         }
 
         R10: MulticastRouter {
-            @display("p=225,50");
+            @display("p=550,70");
             gates:
                 ethg[4];
         }
         R11: MulticastRouter {
-            @display("p=225,125");
+            @display("p=550,160");
             gates:
                 ethg[4];
         }
         R12: MulticastRouter {
-            @display("p=225,200");
+            @display("p=550,250");
             gates:
                 ethg[4];
         }
         R13: MulticastRouter {
-            @display("p=225,275");
+            @display("p=550,340");
             gates:
                 ethg[4];
         }
 
         R20: MulticastRouter {
-            @display("p=300,50");
+            @display("p=700,70");
             gates:
                 ethg[4];
         }
         R21: MulticastRouter {
-            @display("p=300,125");
+            @display("p=700,160");
             gates:
                 ethg[4];
         }
         R22: MulticastRouter {
-            @display("p=300,200");
+            @display("p=700,250");
             gates:
                 ethg[4];
         }
         R23: MulticastRouter {
-            @display("p=300,275");
+            @display("p=700,340");
             gates:
                 ethg[4];
         }
 
         R30: MulticastRouter {
-            @display("p=375,50");
+            @display("p=850,70");
             gates:
                 ethg[4];
         }
         R31: MulticastRouter {
-            @display("p=375,125");
+            @display("p=850,160");
             gates:
                 ethg[4];
         }
         R32: MulticastRouter {
-            @display("p=375,200");
+            @display("p=850,250");
             gates:
                 ethg[4];
         }
         R33: MulticastRouter {
-            @display("p=375,275");
+            @display("p=850,340");
             gates:
                 ethg[4];
         }
 
 
         configurator: Ipv4NetworkConfigurator {
-            @display("p=513,50");
+            @display("p=100,70;is=s");
         }
         client: StandardHost {
-            @display("p=493,275");
+            @display("p=1000,340");
         }
         server: StandardHost {
-            @display("p=48,50");
+            @display("p=250,70");
         }
     connections allowunconnected:
         R00.ethg[1] <--> Eth100M <--> R10.ethg[0];

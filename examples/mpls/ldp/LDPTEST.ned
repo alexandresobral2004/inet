@@ -46,57 +46,57 @@ network LDPTEST
         LSR1: LdpMplsRouter {
             parameters:
                 peers = "ppp0 ppp1 ppp2";
-                @display("p=150,200");
+                @display("p=400,270");
             gates:
                 pppg[4];
         }
         LSR2: LdpMplsRouter {
             parameters:
                 peers = "ppp0 ppp1 ppp2 ppp3";
-                @display("p=250,200");
+                @display("p=550,270");
             gates:
                 pppg[4];
         }
         LSR3: LdpMplsRouter {
             parameters:
                 peers = "ppp0 ppp1 ppp2";
-                @display("p=350,200");
+                @display("p=700,270");
             gates:
                 pppg[4];
         }
         LSR4: LdpMplsRouter {
             parameters:
                 peers = "ppp0 ppp1 ppp2";
-                @display("p=250,100");
+                @display("p=550,170");
             gates:
                 pppg[4];
         }
         LSR5: LdpMplsRouter {
             parameters:
                 peers = "ppp0 ppp1 ppp2";
-                @display("p=250,300");
+                @display("p=550,370");
             gates:
                 pppg[4];
         }
         host1: StandardHost { // client
             parameters:
-                @display("p=40,200;i=device/pc2");
+                @display("p=250,270;i=device/pc2");
         }
         host2: StandardHost { // client
             parameters:
-                @display("p=440,200;i=device/pc2");
+                @display("p=850,270;i=device/pc2");
         }
         host3: StandardHost { // client
             parameters:
-                @display("p=250,10;i=device/pc2");
+                @display("p=550,70;i=device/pc2");
         }
         host4: StandardHost { // client
             parameters:
-                @display("p=250,390;i=device/pc2");
+                @display("p=550,470;i=device/pc2");
         }
         scenarioManager: ScenarioManager {
             parameters:
-                @display("p=150,50");
+                @display("p=100,140;is=s");
         }
     connections:
         LSR1.pppg[0] <--> C15 <--> LSR2.pppg[0];

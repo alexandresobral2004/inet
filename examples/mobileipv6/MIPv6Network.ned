@@ -31,6 +31,7 @@ import inet.node.xmipv6.CorrespondentNode6;
 import inet.node.xmipv6.HomeAgent6;
 import inet.node.xmipv6.WirelessHost6;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
+import inet.visualizer.integrated.IntegratedVisualizer;
 
 
 channel fiberline extends ned.DatarateChannel
@@ -58,40 +59,42 @@ network mIPv6Network
     submodules:
         configurator: Ipv6FlatNetworkConfigurator {
             parameters:
-                @display("p=763,53");
+                @display("p=100,70;is=s");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=753,123");
+                @display("p=100,140;is=s");
         }
         Home_Agent: HomeAgent6 {
             parameters:
-                @display("p=249,229;i=abstract/router");
+                @display("p=250,300;i=abstract/router");
         }
         R_1: Router6 {
             parameters:
-                @display("p=566,227");
+                @display("p=550,300");
         }
         R_2: Router6 {
             parameters:
-                @display("p=406,355");
+                @display("p=400,400");
         }
         MN[total_mn]: WirelessHost6 {
             parameters:
-                @display("p=220,404");
+                @display("p=400,100");
         }
-        CN[total_cn]: CorrespondentNode6;
+        CN[total_cn]: CorrespondentNode6 {
+            @display("p=250,600,row,300");
+        }
         AP_Home: AccessPoint {
             parameters:
-                @display("p=249,172;i=device/accesspoint_s");
+                @display("p=250,200;i=device/accesspoint");
         }
         AP_1: AccessPoint {
             parameters:
-                @display("p=566,172;i=device/accesspoint_s");
+                @display("p=550,200;i=device/accesspoint");
         }
         hub: EtherHub {
             parameters:
-                @display("p=406,412;i=device/hub_s");
+                @display("p=400,500;i=device/hub");
         }
     connections allowunconnected:
 

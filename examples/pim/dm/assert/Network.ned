@@ -25,33 +25,31 @@ import inet.node.inet.StandardHost;
 
 network Network
 {
-    @display("bgb=448,352,white");
-
     submodules:
         R1: MulticastRouter {
-            @display("p=208,102");
+            @display("p=400,160");
         }
         R2: MulticastRouter {
-            @display("p=143,163");
+            @display("p=550,70");
         }
         R3: MulticastRouter {
-            @display("p=276,163");
+            @display("p=550,250");
         }
 
         Source: StandardHost {
-            @display("p=208,33");
+            @display("p=250,160");
         }
         configurator: Ipv4NetworkConfigurator {
-            @display("p=44,41");
+            @display("p=100,70;is=s");
         }
         R4: MulticastRouter {
-            @display("p=208,300");
+            @display("p=850,160");
         }
         Receiver: StandardHost {
-            @display("p=301,300");
+            @display("p=1000,160");
         }
         switch: EtherSwitch {
-            @display("p=208,221");
+            @display("p=700,160");
         }
     connections allowunconnected:
         R1.ethg++ <--> Eth100M <--> R2.ethg++;

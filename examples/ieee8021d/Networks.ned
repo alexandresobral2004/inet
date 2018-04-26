@@ -27,64 +27,56 @@ network SwitchNetwork
 {
     submodules:
         stpTester: StpTester {
-            @display("p=100,290;is=s");
+            @display("p=100,280;is=s");
         }
         scenarioManager: ScenarioManager {
-            @display("p=100,50;is=s");
-        }
-        l2NetworkConfigurator: L2NetworkConfigurator {
             @display("p=100,210;is=s");
         }
-
+        l2NetworkConfigurator: L2NetworkConfigurator {
+            @display("p=100,70;is=s");
+        }
         switch1: EtherSwitch {
             parameters:
-                @display("p=400,50");
+                @display("p=400,70");
             gates:
                 ethg[];
         }
-
         switch2: EtherSwitch {
             parameters:
-                @display("p=400,250");
+                @display("p=475,270");
             gates:
                 ethg[];
         }
-
         switch3: EtherSwitch {
             parameters:
-                @display("p=550,50");
+                @display("p=550,70");
             gates:
                 ethg[];
         }
-
         switch4: EtherSwitch {
             parameters:
-                @display("p=400,150");
+                @display("p=400,170");
             gates:
                 ethg[];
         }
-
         switch5: EtherSwitch {
             parameters:
-                @display("p=650,250");
+                @display("p=625,270");
             gates:
                 ethg[];
         }
-
         switch6: EtherSwitch {
             parameters:
-                @display("p=250,150");
+                @display("p=325,270");
             gates:
                 ethg[];
         }
-
         switch7: EtherSwitch {
             parameters:
-                @display("p=550,150");
+                @display("p=550,170");
             gates:
                 ethg[];
         }
-
     connections:
         switch1.ethg++ <--> Eth1G <--> switch4.ethg++;
         switch1.ethg++ <--> Eth1G <--> switch3.ethg++;
@@ -101,36 +93,35 @@ network LargeNet extends SwitchNetwork
 {
     submodules:
         host1: EtherHost {
-            @display("p=250,50");
+            @display("p=250,170");
         }
-
         host2: EtherHost {
-            @display("p=800,250");
+            @display("p=775,270");
         }
 
         host3: EtherHost {
-            @display("p=700,50");
+            @display("p=700,70");
         }
         host4: EtherHost {
-            @display("p=700,450");
+            @display("p=775,470");
         }
         host5: EtherHost {
-            @display("p=250,450");
+            @display("p=325,470");
         }
         host6: EtherHost {
-            @display("p=250,350");
+            @display("p=325,370");
         }
         switch8: EtherSwitch {
-            @display("p=400,350");
+            @display("p=475,370");
         }
         switch9: EtherSwitch {
-            @display("p=400,450");
+            @display("p=470,470");
         }
         switch10: EtherSwitch {
-            @display("p=550,450");
+            @display("p=625,470");
         }
         switch11: EtherSwitch {
-            @display("p=550,350");
+            @display("p=625,370");
         }
     connections:
         switch11.ethg++ <--> Eth1G <--> switch9.ethg++;

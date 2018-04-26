@@ -33,6 +33,6 @@ network MobileNetworkWithScenario
         }
         scenarioManager: ScenarioManager {
             parameters:
-                @display("p=50,50");
+                @display("p=100,70;is=s");
         }
 }

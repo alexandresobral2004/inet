@@ -25,7 +25,7 @@ network RTPUnicast2
                 bandwidth = 8000;
                 fileName = "../data/moving.mpg.gdf";
                 payloadType = 32;
-                @display("p=400,70");
+                @display("p=250,70");
         }
         receiver: RtpHost {
             parameters:
@@ -36,7 +36,7 @@ network RTPUnicast2
                 bandwidth = 8000;
                 fileName = "";
                 payloadType = 32;
-                @display("p=250,70");
+                @display("p=400,70");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:

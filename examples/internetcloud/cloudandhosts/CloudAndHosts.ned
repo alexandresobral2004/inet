@@ -38,17 +38,17 @@ network CloudAndHosts
     submodules:
         configurator: Ipv4NetworkConfigurator {
             parameters:
-                @display("p=100,80;is=s");
+                @display("p=100,70;is=s");
         }
 
         sender[numSenders]: StandardHost {
-            @display("p=250,80");
+            @display("p=250,70,col,100");
         }
         recip: StandardHost {
-            @display("p=550,80");
+            @display("p=550,70");
         }
         internet: InternetCloud {
-            @display("p=400,80");
+            @display("p=400,70;is=l");
         }
     connections:
         recip.pppg++ <--> C <--> internet.pppg++;

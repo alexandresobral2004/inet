@@ -26,17 +26,17 @@ network Voip
     submodules:
         senderHost: StandardHost {
             parameters:
-                @display("p=200,170");
+                @display("p=250,70");
         }
         receiverHost: StandardHost {
             parameters:
-                @display("p=400,170");
+                @display("p=550,70");
         }
         configurator: Ipv4NetworkConfigurator {
             @display("p=100,70;is=s");
         }
         internetCloud: InternetCloud {
-            @display("p=300,270");
+            @display("p=400,70");
         }
     connections:
         senderHost.pppg++ <--> C <--> internetCloud.pppg++;
