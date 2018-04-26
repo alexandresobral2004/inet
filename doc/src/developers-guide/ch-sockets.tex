@@ -1,33 +1,195 @@
-\ifdraft TODO
-
-\chapter{Socket API}
+\chapter{Working with Sockets}
 \label{cha:sockets}
 
 \section{Overview}
 
-TODO explain the INET socket API in general
+The INET Socket API provides C++ abstractions over the standard OMNeT++ message
+passing interface for several communication protocols. Sockets are most often
+used by applications and routing protocols to acccess the corresponding protocol
+services.
 
-\cppsnippet{UDPSocketUsageExample}{UDP socket usage example}
+In the following sections, we introduce all INET sockets in detail, and we shed
+light on many common usages through examples.
 
-\cppsnippet{TCPSocketUsageExample}{TCP socket usage example}
+\section{General Rules}
 
-\section{Sending Data}
+Although sockets are protocol specific, INET provides an \cppclass{ISocket}
+interface, which is implemtented by each one of them. This interface allows
+general C++ code to handle all kinds of sockets.
 
-TODO
+\subsection*{Configuring Sockets}
 
-\section{Receiving Data}
+Since sockets work with message passing under the hoods, they must be configured
+to be able to send packets and commands on the right gate to the underlying
+communication protocol.
 
-TODO
+\cppsnippet{SocketConfigureExample}{Socket configure example}
 
-\section{Configuring Sockets}
+\subsection*{Identifying Sockets}
 
-TODO
+All sockets have an identifier which is unique within the network node. It is
+assigned to them when the sockets are created. The identifier can be later
+accessed with \ffunc{ISocket::getSocketId()}.
 
+It is also passed along in \cppclass{SocketReq} and \cppclass{SocketInd} packet
+tags. These tags allow identifying which socket \cppclass{Packet}s,
+\cppclass{Request}s, and \cppclass{Indication}s belong to.
+
+\subsection*{Closing Sockets}
+
+Sockets must be closed before deleting them to release the underlying resources
+allocated in the network.
+
+\cppsnippet{UDPSocketConfigureExample}{UDP socket configure example}
+
+\section{UDP Socket}
+
+The \cppclass{UdpSocket} class provides an easy to use interface to send and
+receive \protocol{UDP} datagrams. Applications can simply call the member
+functions (\ffunc{bind}, \ffunc{connect}, \ffunc{send}, \ffunc{sendTo}, etc.) to
+create and configure sockets, and to send and receive \protocol{UDP} datagrams.
+They may use several \cppclass{UdpSocket} objects simulatenously.
+
+The \cppclass{UdpSocket} automatically selects and stores the \fvar{socketId},
+assembles and sends commands such as \fmac{UDP\_C\_BIND} to the \nedtype{Udp}
+module, and can also help you deal with datagrams and indications arriving from
+the \nedtype{Udp} module.
+
+\subsection*{Configuring Sockets}
+
+Since the \cppclass{UdpSocket} works with message passing under the hoods, it
+must be configured to be able to send packets and commands on the right gate to
+the underlying communication protocol.
+
+\cppsnippet{UDPSocketConfigureExample}{UDP socket configure example}
+
+For receiving \protocol{UDP} datagrams on a socket, it must also be bound to an
+address and a port. Both the address and port is optional. If the address is
+unspecified, than all \protocol{UDP} datagrams with any destination address are
+received. If the port is -1, then an unused port is selected automatically by
+the \nedtype{Udp} module. The address and port pair must be unique within the
+same network node.
+
+Here is a code fragment which binds to a specific local address and local port
+to receive \protocol{UDP} datagrams:
+
+\cppsnippet{UDPSocketBindExample}{UDP socket bind example}
+
+There are several other socket options (e.g. broadcast, multicast groups, type
+of service) which can also be configured using the \cppclass{UdpSocket} class.
+
+\subsection*{Sending Datagrams}
+
+After the socket has been configured, applications can send datagrams to a
+remote address and port via a simple function call.
+
+\cppsnippet{UDPSocketSendToExample}{UDP socket sendTo example}
+
+If the application wants to send several datagrams, it can optionally connect to
+the destination. The \protocol{UDP} protocol is in fact connectionless, so when
+the \nedtype{Udp} module receives the connect request, it simply remembers the
+remote address and port, and use it as default destination for later sends.
+The application can call connect several times on the same socket.
+
+\cppsnippet{UDPSocketSendExample}{UDP socket send example}
+
+\subsection*{Receiving Datagrams}
+
+Processing packets and indications which are received from the \nedtype{Udp}
+module is pretty simple. The incoming message must be processed by the socket
+where it belongs.
+
+\cppsnippet{UDPSocketReceiveExample}{UDP socket receive example}
+
+The \cppclass{UdpSocket} class deconstructs the message and uses the
+\cppclass{UdpSocket::ICallback} interface to notify the application about
+received data and error indications. The \cppclass{UdpSocket::ICallback}
+interface contains only a few functions which are to be implemented by the
+application.
+
+\cppsnippet{UDPSocketCallbackInterfaceExample}{UDP socket callback interface
+example}
+
+\section{TCP Socket}
+
+%The \cppclass{TcpSocket} C++ class is provided to simplify managing TCP connections
+%from applications. \cppclass{TcpSocket} handles the job of assembling and sending
+%command messages (OPEN, CLOSE, etc) to \nedtype{Tcp}, and it also simplifies
+%the task of dealing with packets and notification messages coming from \nedtype{Tcp}.
+
+\cppclass{TcpSocket} is a convenience class, to make it easier to manage TCP connections
+from your application models. You'd have one (or more) \cppclass{TcpSocket} object(s)
+in your application simple module class, and call its member functions
+(bind(), listen(), connect(), etc.) to open, close or abort a TCP connection.
+
+TCPSocket chooses and remembers the connId for you, assembles and sends command
+packets (such as OPEN\_ACTIVE, OPEN\_PASSIVE, CLOSE, ABORT, etc.) to TCP,
+and can also help you deal with packets and notification messages arriving
+from TCP.
+
+A session which opens a connection from local port 1000 to 10.0.0.2:2000,
+sends 16K of data and closes the connection may be as simple as this
+(the code can be placed in your \ffunc{handleMessage()} or
+\ffunc{activity()}):
+
+\subsection*{Configuring Sockets}
+
+\cppsnippet{TCPSocketListenExample}{TCP socket listen example}
+
+\subsection*{Sending Data}
+
+\cppsnippet{TCPSocketSendExample}{TCP socket send example}
+
+Dealing with packets and notification messages coming from TCP is somewhat
+more cumbersome. Basically you have two choices: you either process those
+messages yourself, or let TCPSocket do part of the job. For the latter,
+you give TCPSocket a callback object on which it'll invoke the appropriate
+member functions: \ffunc{socketEstablished()}, \ffunc{socketDataArrived()},
+\ffunc{socketFailure()}, \ffunc{socketPeerClosed()},
+etc (these are methods of \cppclass{TCPSocket::CallbackInterface}).,
+The callback object can be your simple module class too.
+
+This code skeleton example shows how to set up a TCPSocket to use the module
+itself as callback object:
+
+\subsection*{Receiving Data}
+
+\cppsnippet{TCPSocketReceiveExample}{TCP socket receive example}
+
+If you need to manage a large number of sockets (e.g. in a server
+application which handles multiple incoming connections), the
+\cppclass{TcpSocketMap} class may be useful. The following code
+fragment to handle incoming connections is from the LDP module:
+
+\cppsnippet{TCPSocketFindExample}{TCP socket find example}
+
+\subsection*{Using Multiple Sockets}
+
+\cppsnippet{TCPSocketMapExample}{TCP socket map example}
+
+\section{SCTP Socket}
+
+\section{IPv4 Socket}
+
+\cppsnippet{IPv4SocketBindExample}{IPv4 socket bind example}
+
+\cppsnippet{IPv4SocketSendExample}{IPv4 socket send example}
+
+\cppsnippet{IPv4SocketReceiveExample}{IPv4 socket receive example}
+
+\section{IPv6 Socket}
+
+\ifdraft TODO
+\section{Ethernet Socket}
+
+\section{IEEE 802.11 Socket}
 \fi
 
+\section{Multiple Sockets}
 
-%%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "usman"
-%%% End:
+If the application needs to manage a large number of sockets, for example in a
+server application which handles multiple incoming TCP connections, the generic
+\cppclass{SocketMap} class may be useful.
+
+\cppsnippet{SocketFindExample}{Socket find example}
 

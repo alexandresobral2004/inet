@@ -38,6 +38,7 @@
 #include "inet/linklayer/ieee80211/mac/Ieee80211Frame_m.h"
 #include "inet/physicallayer/common/packetlevel/Signal.h"
 #include "inet/transportlayer/contract/tcp/TcpSocket.h"
+#include "inet/transportlayer/contract/tcp/TcpSocketMap.h"
 #include "inet/transportlayer/contract/udp/UdpSocket.h"
 
 #define FCS_MODE_DECLARED 1
@@ -649,27 +650,165 @@ dump.writePacket(simTime(), packet); // record with current time
 class App : public cSimpleModule
 {
 public:
-  void udpSocketUsageExample();
-  void tcpSocketUsageExample();
+  void socketConfigureExample();
+  void udpSocketBindExample();
+  void udpSocketSendExample();
+  void udpSocketReceiveExample();
+  void tcpSocketListenExample();
+  void tcpSocketSendExample();
+  void tcpSocketReceiveExample();
+  void ipv4SocketBindExample();
+  void ipv4SocketSendExample();
+  void ipv4SocketReceiveExample();
+  void socketFindExample();
 };
 
-void App::udpSocketUsageExample()
+void App::socketConfigureExample()
 {
-  auto packet = new Packet();
-//!UDPSocketUsageExample
-UdpSocket socket;
-socket.setOutputGate(gate("out")); // configure application output gate
-socket.sendTo(packet, Ipv4Address("10.0.0.42"), 42); // send to address/port
+    UdpSocket socket;
+//!SocketConfigureExample
+socket.setOutputGate(gate("out")); // configure socket output gate
 //!End
 }
 
-void App::tcpSocketUsageExample()
+void App::udpSocketBindExample()
 {
-//!TCPSocketUsageExample
+    UdpSocket socket;
+//!UDPSocketBindExample
+socket.bind(Ipv4Address("10.0.0.42"), 2000); // local address/port
+//!End
+}
+
+void App::udpSocketSendExample()
+{
+    UdpSocket socket;
+    auto packet1 = new Packet();
+    auto packet42 = new Packet();
+//!UDPSocketSendToExample
+socket.sendTo(packet42, Ipv4Address("10.0.0.42"), 2000); // remote address/port
+//!End
+//!UDPSocketSendExample
+socket.connect(Ipv4Address("10.0.0.42"), 2000); // set remote address/port
+socket.send(packet1); // send packets via connected socket
+// ...
+socket.send(packet42);
+//!End
+}
+
+void App::udpSocketReceiveExample()
+{
+    UdpSocket socket;
+    cMessage *message = nullptr;
+//!UDPSocketReceiveExample
+if (socket.belongsToSocket(message)) // match message to socket
+    processMessage(message); // invoke callback interface
+//!End
+}
+
+class UDPSocketCallback
+{
+//!UDPSocketCallbackInterfaceExample
+void socketDataArrived(UdpSocket *socket, Packet *packet);
+void socketErrorArrived(UdpSocket *socket, Indication *indication);
+//!End
+};
+
+void App::tcpSocketSendExample()
+{
+    auto packet = new Packet();
+//!TCPSocketSendExample
 TcpSocket socket;
-socket.setOutputGate(gate("out")); // configure application output gate
-socket.bind(Ipv4Address("10.0.0.42"), 42); // bind to address/port
+socket.setOutputGate(gate("out")); // configure socket output gate
+socket.connect(Ipv4Address("10.0.0.42"), 2000); // remote address/port
+socket.send(packet); // send packet via socket
+socket.close();
+//!End
+}
+
+void App::tcpSocketListenExample()
+{
+//!TCPSocketListenExample
+TcpSocket socket;
+socket.setOutputGate(gate("out")); // configure socket output gate
+socket.bind(Ipv4Address("10.0.0.42"), 42); // local address/port
 socket.listen(); // start listening for incoming connections
+//!End
+}
+
+void App::tcpSocketReceiveExample()
+{
+//!TCPSocketReceiveExample
+//    class MyModule : public cSimpleModule, public TCPSocket::CallbackInterface
+//    {
+//        TCPSocket socket;
+//        virtual void socketDataArrived(int connId, void *yourPtr,
+//                                       cPacket *msg, bool urgent);
+//        virtual void socketFailure(int connId, void *yourPtr, int code);
+//        ...
+//    };
+//
+//    void MyModule::initialize() {
+//        socket.setCallbackObject(this,NULL);
+//    }
+//
+//    void MyModule::handleMessage(cMessage *msg) {
+//        if (socket.belongsToSocket(msg))
+//            socket.processMessage(msg); dispatch to socketXXXX() methods
+//        else
+//            ...
+//    }
+//
+//    void MyModule::socketDataArrived(int, void *, cPacket *msg, bool) {
+//        ev << "Received TCP data, " << msg->getByteLength() << " bytes\\n";
+//        delete msg;
+//    }
+//
+//    void MyModule::socketFailure(int, void *, int code) {
+//        if (code==TCP_I_CONNECTION_RESET)
+//            ev << "Connection reset!\\n";
+//        else if (code==TCP_I_CONNECTION_REFUSED)
+//            ev << "Connection refused!\\n";
+//        else if (code==TCP_I_TIMEOUT)
+//            ev << "Connection timed out!\\n";
+//    }
+//!End
+}
+
+void App::ipv4SocketBindExample()
+{
+    IPv4Socket socket;
+//!IPv4SocketBindExample
+socket.bind(&Protocol::icmp);
+//!End
+}
+
+void App::ipv4SocketSendExample()
+{
+    auto packet = new Packet();
+//!IPv4SocketSendExample
+socket.send(packet);
+//!End
+}
+
+void App::ipv4SocketReceiveExample()
+{
+//!IPv4SocketReceiveExample
+//!End
+}
+
+void App::socketFindExample()
+{
+    cMessage *message = nullptr;
+    SocketMap socketMap;
+//!SocketFindExample
+auto socket = socketMap.findSocketFor(message);
+if (socket == nullptr) { // not found, must be incoming connection
+    socket = new TcpSocket(msg);
+    socket->setOutputGate(gate("out"));
+    socket->setCallback(this);
+    socketMap.addSocket(socket);
+}
+socket->processMessage(message); // dispatch to callback interface
 //!End
 }
 
