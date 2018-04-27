@@ -365,41 +365,14 @@ it just defines gates and parameters an \nedtype{IMacRelayUnit} should have.
 Concrete inplementations add
 capacity and performance aspects to the model (number of frames processed
 per second, amount of memory available in the switch, etc.)
-C++ implementations can subclass from the class \cppclass{MACRelayUnitBase}.
 
-There are two versions of \nedtype{IMacRelayUnit}:
-
-\begin{description}
-  \item[\nedtype{MACRelayUnitNP}] models one or more CPUs with shared memory,
-    working from a single shared queue.
-  \item[\nedtype{MACRelayUnitPP}] models one CPU assigned to each incoming port,
-    working with shared memory but separate queues.
-\end{description}
-
-In both models input messages are queued. CPUs poll messages from the queue
-and process them in \fpar{processingTime}. If the memory usage exceeds
-\fpar{bufferSize}, the frame will be dropped.
+There are two versions of \nedtype{IMacRelayUnit}: \nedtype{MacRelayUnit}]
 
 A simple scheme for sending PAUSE frames is built in (although
 users will probably change it). When the buffer level goes
 above a high watermark, PAUSE frames are sent on all ports.
 The watermark and the pause time is configurable; use zero
 values to disable the PAUSE feature.
-
-% FIXME valid values for pauseTime: 0..0xFFFF
-% FIXME ETHER_PAUSE_COMMAND_BYTES should be 4 in Ethernet.h (2bytes opcode + 2bytes pauseTime)
-% FIXME PAUSE frame should not be sent on all ports probably
-% TODO add lowWatermark, send PauseFrame(pauseUnits=0) to resume sending
-
-The relay units collects the following statistics:
-
-\begin{description}
-\item[usedBufferBytes] memory usage as function of time
-\item[processedBytes] count and length of processed frames
-\item[droppedBytes] count and length of frames dropped caused by out of memory
-\end{description}
-
-% FIXME MACRelayUnitNP: no signals are generated, how does @statistic work in the ned file?
 
 \subsection{EtherSwitch}
 
