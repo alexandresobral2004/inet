@@ -18,12 +18,14 @@ TODO: 802.1d (STP, RSTP), 802.2 (LLC), ...
 
 \section{Nodes}
 
+There are several node models that can be used in an Ethernet network:
+ 
 \begin{itemize}
   \item Node models such as \nedtype{StandardHost} and \nedtype{Router} are Ethernet-capable
-  \item \nedtype{EtherSwitch} TODO switching hub
-  \item \nedtype{EtherHub} TODO repeating hub
-  \item \nedtype{EtherBus} TODO legacy coaxial cable
-  \item \nedtype{EtherHost} TODO is a sample node
+  \item \nedtype{EtherSwitch} models an Ethernet switch, i.e. a multiport bridging device
+  \item \nedtype{EtherHub} models an Ethernet hub or multiport repeater
+  \item \nedtype{EtherBus} models the coaxial cable (10BASE2 or 10BASE5 network segments) on legact Ethernet networks 
+  \item \nedtype{EtherHost} is a sample node which can be used to generate ``raw'' Ethernet traffic
 \end{itemize}
 
 how to connect networks
@@ -337,11 +339,21 @@ values to disable the PAUSE feature.
 
 \subsection{Stp}
 
-\nedtype{Stp} TODO
+The \nedtype{Stp} module type implements Spanning Tree Protocol (STP). STP
+is a network protocol that builds a loop-free logical topology for Ethernet
+networks. The basic function of STP is to prevent bridge loops and the broadcast
+radiation that results from them.
+
+STP creates a spanning tree within a network of connected layer-2 bridges, and
+disables those links that are not part of the spanning tree, leaving a single
+active path between any two network nodes.
+
 
 \subsection{Rstp}
 
-\nedtype{Rstp} TODO
+\nedtype{Rstp} implements Rapid Spanning Tree Protocol (RSTP), an improved
+version of STP. RSTP provides significantly faster recovery in response to
+network changes or failures.
 
 
 \section{Implemented Standards}
