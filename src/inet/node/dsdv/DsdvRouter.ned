@@ -33,7 +33,7 @@ module DsdvRouter extends WirelessHost
 
     submodules:
         dsdv: Dsdv {
-            @display("p=700,300");
+            @display("p=875,240");
         }
 
     connections:

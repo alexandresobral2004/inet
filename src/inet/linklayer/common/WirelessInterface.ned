@@ -39,13 +39,13 @@ module WirelessInterface like IWirelessInterface
         input radioIn @labels(ISignal);
     submodules:
         classifier: <classifierType> like IIeee8021dQosClassifier if classifierType != "" {
-            @display("p=350,100");
+            @display("p=250,100");
         }
         mac: <macType> like IMacProtocol {
-            @display("p=150,200");
+            @display("p=100,200");
         }
         radio: <radioType> like IRadio if radioType != "" {
-            @display("p=150,400");
+            @display("p=100,300");
         }
     connections allowunconnected:
         radioIn --> { @display("m=s"); } --> radio.radioIn if radioType != "";

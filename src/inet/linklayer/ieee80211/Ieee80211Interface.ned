@@ -64,7 +64,7 @@ module Ieee80211Interface like IWirelessInterface
     submodules:
         mib: Ieee80211Mib {
             parameters:
-                @display("p=100,100;is=s");
+                @display("p=100,80;is=s");
         }
         llc: <llcType> like IIeee8022Llc {
             parameters:
@@ -72,15 +72,15 @@ module Ieee80211Interface like IWirelessInterface
         }
         classifier: <classifierType> like IIeee8021dQosClassifier if classifierType != "" {
             parameters:
-                @display("p=450,100");
+                @display("p=400,100");
         }
         agent: Ieee80211AgentSta if _agentNeeded {
             parameters:
-                @display("p=650,350");
+                @display("p=550,350");
         }
         mgmt: <mgmtType> like IIeee80211Mgmt {
             parameters:
-                @display("p=450,350");
+                @display("p=400,350");
         }
         mac: <macType> like IIeee80211Mac {
             parameters:
@@ -88,7 +88,7 @@ module Ieee80211Interface like IWirelessInterface
         }
         radio: <radioType> like IRadio {
             parameters:
-                @display("p=250,600");
+                @display("p=250,500");
         }
     connections:
         radioIn --> { @display("m=s"); } --> radio.radioIn;

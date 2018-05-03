@@ -11,7 +11,7 @@ module ManetRouter extends WirelessHost
         wlan[*].mgmtType = default("Ieee80211MgmtAdhoc");
     submodules:
         routing: <routingProtocolType> like IManetRouting {
-            @display("p=700,300");
+            @display("p=875,240");
         }
     connections:
         routing.ipOut --> tn.in++;

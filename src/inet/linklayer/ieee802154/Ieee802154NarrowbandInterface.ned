@@ -38,11 +38,11 @@ module Ieee802154NarrowbandInterface like IWirelessInterface
     submodules:
         mac: Ieee802154NarrowbandMac {
             parameters:
-                @display("p=100,150");
+                @display("p=100,100");
         }
         radio: <radioType> like IRadio {
             parameters:
-                @display("p=100,250");
+                @display("p=100,200");
         }
     connections:
         upperLayerIn --> mac.upperLayerIn;

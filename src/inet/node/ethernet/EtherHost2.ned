@@ -35,7 +35,7 @@ module EtherHost2
         bool csmacdSupport = default(true);  // by default use CSMA/CD
         string macType = default(csmacdSupport ? "EtherMac" : "EtherMacFullDuplex"); // ~EtherMac or ~EtherMacFullDuplex
         string queueType = default(""); // DropTailQueue, DiffServQueue, or "" to use the internal queue
-        string fcsMode @enum("declaredCorrect", "declaredIncorrect", "computed") = default("declaredCorrect");
+        string fcsMode @enum("declaredCorrect","declaredIncorrect","computed") = default("declaredCorrect");
         *.interfaceTableModule = default("");
         *.fcsMode = fcsMode;
         @networkNode();
@@ -45,19 +45,19 @@ module EtherHost2
         inout ethg @labels(EtherFrame-conn);
     submodules:
         app: EtherTrafGen {
-            @display("p=155,59");
+            @display("p=200,80");
         }
         encap: <default("EtherEncap")> like IEtherEncap {
-            @display("p=155,146");
+            @display("p=200,180");
         }
         queue: EtherQosQueue if queueType != "" {
             parameters:
                 dataQueueType = queueType;
-                @display("p=87,207;q=l2queue");
+                @display("p=100,280;q=l2queue");
         }
         mac: <macType> like IEtherMac {
             queueModule = (queueType == "" ? "" : "^.queue");
-            @display("p=155,272;q=txQueue");
+            @display("p=200,380;q=txQueue");
         }
     connections:
         app.out --> encap.upperLayerIn;

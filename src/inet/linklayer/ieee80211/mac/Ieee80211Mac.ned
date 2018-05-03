@@ -65,7 +65,7 @@ module Ieee80211Mac extends MacProtocolBase like IIeee80211Mac
         string address = default("auto"); // MAC address as hex string (12 hex digits), or
                                           // "auto". "auto" values will be replaced by
                                           // a generated MAC address in init stage 0.
-        string modeSet @enum("a", "b", "g(erp)", "g(mixed)", "n", "p") = default("g(mixed)");
+        string modeSet @enum("a","b","g(erp)","g(mixed)","n","p") = default("g(mixed)");
         string fcsMode @enum("declared","computed") = default("declared");
 
         int mtu @unit(B) = default(2304B);
@@ -109,15 +109,15 @@ module Ieee80211Mac extends MacProtocolBase like IIeee80211Mac
         }
         rx: <default("Rx")> like IRx {
             parameters:
-                @display("p=100,250");
+                @display("p=100,200");
         }
         tx: <default("Tx")> like ITx {
             parameters:
-                @display("p=250,250");
+                @display("p=250,200");
         }
         statistics: <default("BasicStatistics")> like IStatistics {
             parameters:
-                @display("p=400,250");
+                @display("p=400,200");
         }
 }
 

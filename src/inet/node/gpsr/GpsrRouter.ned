@@ -17,7 +17,7 @@ module GpsrRouter extends WirelessHost
     submodules:
         gpsr: Gpsr {
             parameters:
-                @display("p=700,300");
+                @display("p=875,240");
         }
 
     connections:

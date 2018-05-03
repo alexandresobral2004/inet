@@ -46,7 +46,7 @@ module AodvRouter extends WirelessHost
         wlan[*].mgmtType = default("Ieee80211MgmtAdhoc");
     submodules:
         aodv: Aodv {
-            @display("p=1150,240");
+            @display("p=875,240");
         }
     connections:
         aodv.ipOut --> tn.in++;

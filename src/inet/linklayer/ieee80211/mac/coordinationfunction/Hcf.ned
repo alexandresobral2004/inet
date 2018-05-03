@@ -62,72 +62,72 @@ module Hcf
         edca: Edca {
             parameters:
                 numEdcafs = numEdcafs;
-                @display("p=150,100");
+                @display("p=100,100");
         }
         hcca: Hcca {
             parameters:
-                @display("p=150,200");
+                @display("p=100,200");
         }
         originatorMacDataService: OriginatorQosMacDataService {
             parameters:
-                @display("p=150,300");
+                @display("p=100,300");
         }
         recipientMacDataService: RecipientQosMacDataService {
             parameters:
-                @display("p=150,400");
+                @display("p=100,400");
         }
         rateSelection: QosRateSelection {
             parameters:
                 rateControlModule = "^.rateControl";
-                @display("p=400,100");
+                @display("p=300,100");
         }
         rateControl: <rateControlType> like IRateControl if rateControlType != "" {
             parameters:
-                @display("p=400,200");
+                @display("p=300,200");
         }
         singleProtectionMechanism: SingleProtectionMechanism {
             parameters:
-                @display("p=400,300");
+                @display("p=300,300");
         }
         edcaMgmtAndNonQoSRecoveryProcedure: NonQosRecoveryProcedure {
             parameters:
                 cwCalculatorModule = "^.edca.edcaf[1]"; // best effort
                 rtsPolicyModule = "^.rtsPolicy";
-                @display("p=700,300");
+                @display("p=500,300");
         }
         edcaDataRecoveryProcedures[numEdcafs]: QosRecoveryProcedure {
             parameters:
                 cwCalculatorModule = "^.edca.edcaf[" + string(index) + "]";
                 rtsPolicyModule = "^.rtsPolicy";
-                @display("p=700,400,column,100");
+                @display("p=500,400,column,100");
         }
         edcaTxopProcedures[numEdcafs]: TxopProcedure {
             parameters:
-                @display("p=400,400,column,100");
+                @display("p=300,400,column,100");
         }
         originatorAckPolicy: OriginatorQosAckPolicy {
             parameters:
-                @display("p=1000,100");
+                @display("p=700,100");
         }
         recipientAckPolicy: RecipientQosAckPolicy {
             parameters:
-                @display("p=1000,200");
+                @display("p=700,200");
         }
         rtsPolicy: QosRtsPolicy {
             parameters:
-                @display("p=1000,300");
+                @display("p=700,300");
         }
         ctsPolicy: QosCtsPolicy {
             parameters:
-                @display("p=1000,400");
+                @display("p=700,400");
         }
         originatorBlockAckAgreementPolicy: OriginatorBlockAckAgreementPolicy if isBlockAckSupported {
             parameters:
                 originatorAckPolicyModule = "^.originatorAckPolicy";
-                @display("p=1000,500");
+                @display("p=700,500");
         }
         recipientBlockAckAgreementPolicy: RecipientBlockAckAgreementPolicy if isBlockAckSupported {
             parameters:
-                @display("p=1000,600");
+                @display("p=700,600");
         }
 }

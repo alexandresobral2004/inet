@@ -48,7 +48,7 @@ module LoopbackInterface like ILoopbackInterface
         }
         lo: Loopback {
             parameters:
-                @display("p=350,300");
+                @display("p=350,250");
         }
     connections:
         upperLayerIn --> { @display("m=n"); } --> outputHook[0].in if numOutputHooks > 0;

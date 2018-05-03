@@ -46,11 +46,11 @@ module GenericNetworkLayer like INetworkLayer
     submodules:
         routingTable: GenericRoutingTable {
             parameters:
-                @display("p=100,100;is=s");
+                @display("p=100,80;is=s");
         }
         echo: EchoProtocol {
             parameters:
-                @display("p=600,100");
+                @display("p=500,100");
         }
         up: MessageDispatcher {
             parameters:
@@ -58,11 +58,11 @@ module GenericNetworkLayer like INetworkLayer
         }
         arp: GlobalArp {
             parameters:
-                @display("p=300,300;q=pendingQueue");
+                @display("p=200,300;q=pendingQueue");
         }
         gnp: GenericNetworkProtocol {
             parameters:
-                @display("p=450,300;q=queue");
+                @display("p=350,300;q=queue");
         }
         lp: MessageDispatcher {
             parameters:

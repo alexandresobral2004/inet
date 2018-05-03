@@ -77,12 +77,12 @@ module EtherSwitch
         }
         nl: MessageDispatcher {
             parameters:
-                @display("p=400,200;b=400");
+                @display("p=800,200;b=1200,5");
         }
         eth[sizeof(ethg)]: <default("EthernetInterface")> like IEthernetInterface {
             parameters:
                 mac.promiscuous = true;
-                @display("p=400,300,row,150;q=txQueue");
+                @display("p=250,300,row,150;q=txQueue");
         }
     connections:
         relayUnit.ifOut --> nl.in++;
