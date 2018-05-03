@@ -15,40 +15,39 @@ import inet.visualizer.contract.IIntegratedVisualizer;
 
 network WiredAndWirelessHostsWithAP
 {
-    @display("bgb=500,300");
     submodules:
         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
             parameters:
-                @display("p=100,50");
+                @display("p=100,210;is=s");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
                 assignDisjunctSubnetAddresses = false;
-                @display("p=100,150");
+                @display("p=100,70;is=s");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=100,250");
+                @display("p=100,140;is=s");
         }
         wirelessHost1: WirelessHost {
             parameters:
-                @display("p=62,69");
+                @display("p=250,100");
         }
         wiredHost1: StandardHost {
             parameters:
-                @display("p=296,134");
+                @display("p=400,190");
         }
         wiredHost2: StandardHost {
             parameters:
-                @display("p=412,70");
+                @display("p=700,100");
         }
         router: Router {
             parameters:
-                @display("p=296,69");
+                @display("p=550,100");
         }
         accessPoint: AccessPoint {
             parameters:
-                @display("p=205,69");
+                @display("p=400,100");
         }
     connections:
         accessPoint.ethg++ <--> Eth100M <--> router.ethg++;

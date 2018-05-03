@@ -22,9 +22,8 @@ import inet.node.ethernet.EtherSwitch;
 import inet.node.inet.Router;
 import inet.node.inet.StandardHost;
 import inet.node.internetcloud.InternetCloud;
-import inet.node.rip.RipRouter;
 import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
-import inet.transportlayer.sctp.SCTPNatRouter;
+import inet.transportlayer.sctp.SctpNatRouter;
 
 
 //
@@ -103,10 +102,10 @@ network NetPerfMeterHostNetwork
 network SctpNatRouterNetwork
 {
     submodules:
-        sctpNatRouter: SCTPNatRouter {
+        sctpNatRouter: SctpNatRouter {
             @display("p=145,153");
         }
-        sctpNatRouter1: SCTPNatRouter {
+        sctpNatRouter1: SctpNatRouter {
             @display("p=362,153");
         }
         configurator: Ipv4NetworkConfigurator {
