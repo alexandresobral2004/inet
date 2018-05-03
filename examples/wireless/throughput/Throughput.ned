@@ -39,20 +39,20 @@ module ThroughputClient
         cli: EtherAppClient {
             parameters:
                 registerSAP = false;
-                @display("b=40,24;p=180,60,col");
+                @display("p=300,70");
         }
         wlan: Ieee80211Interface {
             parameters:
-                @display("p=112,134;q=queue");
+                @display("p=250,160;q=queue");
                 mgmtType = default("Ieee80211MgmtStaSimplified");
         }
         interfaceTable: InterfaceTable {
             parameters:
-                @display("p=50,50;is=s");
+                @display("p=100,70;is=s");
         }
         mobility: StationaryMobility {
             parameters:
-                @display("p=50,141;is=s");
+                @display("p=100,140;is=s");
         }
     connections allowunconnected:
         wlan.radioIn <-- radioIn;
@@ -67,11 +67,11 @@ network Throughput
     submodules:
         visualizer: <default("IntegratedCanvasVisualizer")> like IIntegratedVisualizer if hasVisualizer() {
             parameters:
-                @display("p=100,50");
+                @display("p=100,140;is=s");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
             parameters:
-                @display("p=100,150");
+                @display("p=100,70;is=s");
         }
         cliHost[numCli]: ThroughputClient {
             parameters:
@@ -79,6 +79,6 @@ network Throughput
         }
         ap: WirelessAPWithSink {
             parameters:
-                @display("p=200,200;r=,,#707070");
+                @display("p=250,200;r=,,#707070");
         }
 }

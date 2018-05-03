@@ -184,6 +184,6 @@ module PhysicalEnvironment like IPhysicalEnvironment
         }
         ground: <groundType> like IGround if groundType != "" {
             parameters:
-                @display("p=100,180");
+                @display("p=100,160");
         }
 }

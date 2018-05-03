@@ -61,41 +61,41 @@ module DiffservQueue like IOutputQueue
     submodules:
         classifier: BehaviorAggregateClassifier {
             dscps = "EF AF11 AF12 AF13 AF21 AF22 AF23 AF31 AF32 AF33 AF41 AF42 AF43";
-            @display("p=100,340");
+            @display("p=100,300");
         }
         efMeter: TokenBucketMeter {
             cir = default("10%"); // reserved EF bandwith as percentage of datarate of the interface
             cbs = default(5000B); // 5 1000B packets
-            @display("p=250,160");
+            @display("p=200,80");
         }
         sink: Sink {
-            @display("p=400,70");
+            @display("p=300,160");
         }
         efQueue: DropTailQueue {
             frameCapacity = default(5); // keep low, for low delay and jitter
-            @display("p=400,160");
+            @display("p=400,80");
         }
         af1xQueue: AFxyQueue {
-            @display("p=250,250");
+            @display("p=250,240");
         }
         af2xQueue: AFxyQueue {
             @display("p=250,340");
         }
         af3xQueue: AFxyQueue {
-            @display("p=250,430");
+            @display("p=250,440");
         }
         af4xQueue: AFxyQueue {
-            @display("p=250,520");
+            @display("p=250,540");
         }
         beQueue: DropTailQueue {
-            @display("p=250,610");
+            @display("p=250,640");
         }
         wrr: WrrScheduler {
             weights = default("1 1 1 1 1");
-            @display("p=400,430");
+            @display("p=400,440");
         }
         priority: PriorityScheduler {
-            @display("p=550,340");
+            @display("p=550,260");
         }
 
     connections:

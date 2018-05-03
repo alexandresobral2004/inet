@@ -25,7 +25,7 @@ import inet.visualizer.contract.IIntegratedVisualizer;
 module IntegratedVisualizer like IIntegratedVisualizer
 {
     parameters:
-        @display("i=block/app_s");
+        @display("i=block/app");
         string canvasVisualizerType = default("IntegratedCanvasVisualizer");
         string osgVisualizerType = default(""); // TODO:  revive "IntegratedOsgVisualizer" when OSG visualizers are at least as good as Canvas based
     submodules:

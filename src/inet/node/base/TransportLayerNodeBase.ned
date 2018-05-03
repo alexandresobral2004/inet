@@ -33,7 +33,6 @@ module TransportLayerNodeBase extends NetworkLayerNodeBase
         string sctpType = default(firstAvailableOrEmpty("Sctp"));
         @figure[transportLayer](type=rectangle; pos=250,170; size=1000,130; fillColor=#ff0000; lineColor=#808080; cornerRadius=5; fillOpacity=0.1);
         @figure[transportLayer.title](type=text; pos=1245,175; anchor=ne; text="transport layer");
-
     submodules:
         udp: <udpType> like IUdp if hasUdp {
             parameters:
