@@ -54,7 +54,7 @@ import inet.routing.contract.IOspf;
 //     - @helloInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @routerDeadInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @authenticationType - Optional OSPF packet authentication protocol (SimplePasswordType | CrytographicType | NullType)
-//     - @authenticationKey - Optional 8 byte hexa value e.g. 0x5D8ABDAEDFCB8BEE
+//     - @authenticationKey - Optional 8 byte hexadecimal value e.g. 0x5D8ABDAEDFCB8BEE
 //
 //   - <BroadcastInterface> - Describes the parameters of a broadcast interface. It is identified in
 //     the router by its ifName value, or name of toward module. HelloInterval and RouterDeadInterval
@@ -68,7 +68,7 @@ import inet.routing.contract.IOspf;
 //     - @helloInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @routerDeadInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @authenticationType - Optional OSPF packet authentication protocol (SimplePasswordType | CrytographicType | NullType)
-//     - @authenticationKey - Optional 8 byte hexa value e.g. 0x5D8ABDAEDFCB8BEE
+//     - @authenticationKey - Optional 8 byte hexadecimal value e.g. 0x5D8ABDAEDFCB8BEE
 //     - @routerPriority - Optional integer specifying the priority in DR/BDR election. Set to 0 to exclude the router from the election.
 //
 //   - <PointToMultiPointInterface> - Describes the parameters of a point-to-multipoint interface. It is
@@ -84,7 +84,7 @@ import inet.routing.contract.IOspf;
 //     - @helloInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @routerDeadInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @authenticationType - Optional OSPF packet authentication protocol (SimplePasswordType | CrytographicType | NullType)
-//     - @authenticationKey - Optional 8 byte hexa value e.g. 0x5D8ABDAEDFCB8BEE
+//     - @authenticationKey - Optional 8 byte hexadecimal value e.g. 0x5D8ABDAEDFCB8BEE
 //     - <PointToMultiPointNeighborList>
 //       - <PointToMultiPointNeighbor> - the content of the element is a string resolvable to an IPv4 address
 //
@@ -105,7 +105,7 @@ import inet.routing.contract.IOspf;
 //     - @helloInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @routerDeadInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @authenticationType - Optional OSPF packet authentication protocol (SimplePasswordType | CrytographicType | NullType)
-//     - @authenticationKey - Optional 8 byte hexa value e.g. 0x5D8ABDAEDFCB8BEE
+//     - @authenticationKey - Optional 8 byte hexadecimal value e.g. 0x5D8ABDAEDFCB8BEE
 //     - @routerPriority - Optional integer specifying the priority in DR/BDR election. Set to 0 to exclude the router from the election.
 //     - @pollInterval - Optional integer that specifies the length of time, in seconds, between
 //                       OSPF packets that the router send before adjacency is established with a neighbor
@@ -122,7 +122,7 @@ import inet.routing.contract.IOspf;
 //     - @helloInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @routerDeadInterval - An optional integer that must be the same for all router interfaces attached to the same network
 //     - @authenticationType - Optional OSPF packet authentication protocol (SimplePasswordType | CrytographicType | NullType)
-//     - @authenticationKey - Optional 8 byte hexa value e.g. 0x5D8ABDAEDFCB8BEE
+//     - @authenticationKey - Optional 8 byte hexadecimal value e.g. 0x5D8ABDAEDFCB8BEE
 //
 simple Ospf like IOspf
 {
