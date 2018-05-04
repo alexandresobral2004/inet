@@ -8,12 +8,15 @@ PNGPICS = $(SVGPICS:.svg=.png) $(DOTPICS:.dot=.png)
 INKSCAPE=inkscape
 DOT=dot
 
+# LATEXOPTS = -file-line-error -halt-on-error -interaction=batchmode
+LATEXOPTS = 
+
 pdf: *.tex $(PDFPICS) figures/*.png
-	pdflatex $(DOCNAME).tex
+	pdflatex $(LATEXOPTS) $(DOCNAME).tex
 	bibtex $(DOCNAME)
 	makeindex $(DOCNAME)
-	pdflatex $(DOCNAME).tex
-	pdflatex $(DOCNAME).tex
+	pdflatex $(LATEXOPTS) $(DOCNAME).tex
+	pdflatex $(LATEXOPTS) $(DOCNAME).tex
 	rm -f *.aux *.idx *.ilg *.ind *.log *.out *.toc *.blg *.bbl
 	mv $(DOCNAME).pdf ../..
 
