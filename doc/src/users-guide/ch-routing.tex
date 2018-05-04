@@ -92,11 +92,47 @@ It uses a link state routing (LSR) algorithm and falls into the group
 of interior gateway protocols (IGPs), operating within a single
 autonomous system (AS).
 
-The \nedtype{Ospf} module implements the OSPF Version 2. Areas and routers
-can be configured using an XML file.
-
 \nedtype{OspfRouter} is a \nedtype{Router} with the OSPF protocol enabled.
 
+The \nedtype{Ospf} module implements OSPF protocol version 2. Areas and routers
+can be configured using an XML file specified by the \ttt{ospfConfig} parameter.
+Various parameters for the network interfaces can be specified also in the XML
+file or as a parameter of the \nedtype{Ospf} module.
+
+\begin{inifile}
+  **.ospf.ospfConfig = xmldoc("ASConfig.xml")
+  **.ospf.helloInterval = 12s
+  **.ospf.retransmissionInterval = 6s
+\end{inifile}
+
+The \ttt{<OSPFASConfig>} root element may contain \ttt{<Area>} and \ttt{<Router>}
+elements with various attributes specifying the parameters for the network
+interfaces. Most importantly \ttt{<Area>} contains \ttt{<AddressRange>} elements
+enumerating the network addresses that should be advertized by the protocol.
+Also \ttt{<Router>} elements may contain data for configuring various pont-to-point
+or broadcast interfaces.
+
+\begin{verbatim}
+<?xml version="1.0"?>
+<OSPFASConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="OSPF.xsd">
+  <!-- Areas -->
+  <Area id="0.0.0.0">
+    <AddressRange address="H1" mask="H1" status="Advertise" />
+    <AddressRange address="H2" mask="H2" status="Advertise" />
+    <AddressRange address="R1>R2" mask="R1>R2" status="Advertise" />
+    <AddressRange address="R2>R1" mask="R2>R1" status="Advertise" />
+  </Area>
+  <!-- Routers -->
+  <Router name="R1" RFC1583Compatible="true">
+    <BroadcastInterface ifName="eth0" areaID="0.0.0.0" interfaceOutputCost="1" routerPriority="1" />
+    <PointToPointInterface ifName="eth1" areaID="0.0.0.0" interfaceOutputCost="2" />
+  </Router>
+  <Router name="R2" RFC1583Compatible="true">
+    <PointToPointInterface ifName="eth0" areaID="0.0.0.0" interfaceOutputCost="2" />
+    <BroadcastInterface ifName="eth1" areaID="0.0.0.0" interfaceOutputCost="1" routerPriority="2" />
+  </Router>
+</OSPFASConfig>
+\end{verbatim}
 
 \section{BGP}
 \label{sec:bgp}
@@ -104,6 +140,8 @@ can be configured using an XML file.
 BGP (Border Gateway Protocol) is a standardized exterior gateway protocol
 designed to exchange routing and reachability information among
 autonomous systems (AS) on the Internet.
+
+\nedtype{BgpRouter} is a \nedtype{Router} with the BGP protocol enabled.
 
 The \nedtype{Bgp} module implements BGP Version 4. The model implements
 RFC 4271, with some limitations. Autonomous Systems and rules can be
@@ -186,8 +224,6 @@ Inside \ttt{<AS>} elements various rules can be sepecified:
   \item DenyASOUT: deny routes learned by AS in OUT traffic (AS id must be
         specified as the body of the element.)
 \end{itemize}
-
-\nedtype{BgpRouter} is a \nedtype{Router} with the BGP protocol enabled.
 
 %%% Local Variables:
 %%% mode: latex
